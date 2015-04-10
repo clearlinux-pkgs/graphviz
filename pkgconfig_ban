@@ -1,0 +1,17 @@
+# This file contains pkgconfig build requirements that get picked up
+# but are undesirable. One entry per line, no whitespace.
+QtCore
+ann
+glitz
+guile-2.0
+gts
+libglade-2.0
+libgvc
+libming
+librsvg-2.0
+libwebp
+gtkglext-1.0
+gtkgl-2.0
+lasi
+poppler-glib
+ruby
