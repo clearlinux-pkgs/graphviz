@@ -1,2 +1,10 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+librsvg-dev
+freeglut-dev
+libgd-dev
+expat-dev
+gtk+-dev
+libXt-dev
+tcl
+tcl-dev

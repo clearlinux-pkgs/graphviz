@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.38.0
-Release  : 5
+Release  : 6
 URL      : http://graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
 Source0  : http://graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
 Summary  : Graph Visualization Tools
@@ -15,19 +15,25 @@ Requires: graphviz-lib
 Requires: graphviz-data
 Requires: graphviz-doc
 BuildRequires : bison
+BuildRequires : expat-dev
 BuildRequires : flex
+BuildRequires : freeglut-dev
+BuildRequires : gtk+-dev
+BuildRequires : libXt-dev
+BuildRequires : libgd-dev
+BuildRequires : librsvg-dev
 BuildRequires : pkgconfig(fontconfig)
 BuildRequires : pkgconfig(freetype2)
 BuildRequires : pkgconfig(gdk-2.0)
 BuildRequires : pkgconfig(gdk-pixbuf-2.0)
 BuildRequires : pkgconfig(gtk+-2.0)
-BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(libR)
+BuildRequires : pkgconfig(librsvg-2.0)
 BuildRequires : pkgconfig(pangocairo)
 BuildRequires : pkgconfig(pangoft2)
 BuildRequires : pkgconfig(xrender)
-BuildRequires : pkgconfig(xt)
 BuildRequires : tcl
+BuildRequires : tcl-dev
 
 %description
 A collection of tools for the manipulation and layout
@@ -56,6 +62,7 @@ Group: Development
 Requires: graphviz-lib
 Requires: graphviz-bin
 Requires: graphviz-data
+Provides: graphviz-devel
 
 %description dev
 dev components for the graphviz package.
@@ -83,7 +90,7 @@ lib components for the graphviz package.
 
 %build
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %install
 rm -rf %{buildroot}
@@ -91,46 +98,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-/usr/lib64/graphviz/libgvplugin_core.so
-/usr/lib64/graphviz/libgvplugin_core.so.6
-/usr/lib64/graphviz/libgvplugin_core.so.6.0.0
-/usr/lib64/graphviz/libgvplugin_dot_layout.so
-/usr/lib64/graphviz/libgvplugin_dot_layout.so.6
-/usr/lib64/graphviz/libgvplugin_dot_layout.so.6.0.0
-/usr/lib64/graphviz/libgvplugin_gdk.so
-/usr/lib64/graphviz/libgvplugin_gdk.so.6
-/usr/lib64/graphviz/libgvplugin_gdk.so.6.0.0
-/usr/lib64/graphviz/libgvplugin_gtk.so
-/usr/lib64/graphviz/libgvplugin_gtk.so.6
-/usr/lib64/graphviz/libgvplugin_gtk.so.6.0.0
-/usr/lib64/graphviz/libgvplugin_neato_layout.so
-/usr/lib64/graphviz/libgvplugin_neato_layout.so.6
-/usr/lib64/graphviz/libgvplugin_neato_layout.so.6.0.0
-/usr/lib64/graphviz/libgvplugin_pango.so
-/usr/lib64/graphviz/libgvplugin_pango.so.6
-/usr/lib64/graphviz/libgvplugin_pango.so.6.0.0
-/usr/lib64/graphviz/libgvplugin_xlib.so
-/usr/lib64/graphviz/libgvplugin_xlib.so.6
-/usr/lib64/graphviz/libgvplugin_xlib.so.6.0.0
-/usr/lib64/graphviz/tcl/libtcldot.so
-/usr/lib64/graphviz/tcl/libtcldot.so.0
-/usr/lib64/graphviz/tcl/libtcldot.so.0.0.0
-/usr/lib64/graphviz/tcl/libtcldot_builtin.so
-/usr/lib64/graphviz/tcl/libtcldot_builtin.so.0
-/usr/lib64/graphviz/tcl/libtcldot_builtin.so.0.0.0
-/usr/lib64/graphviz/tcl/libtclplan.so
-/usr/lib64/graphviz/tcl/libtclplan.so.0
-/usr/lib64/graphviz/tcl/libtclplan.so.0.0.0
 /usr/lib64/graphviz/tcl/pkgIndex.tcl
-/usr/lib64/tcl8.6/graphviz/libtcldot.so
-/usr/lib64/tcl8.6/graphviz/libtcldot.so.0
-/usr/lib64/tcl8.6/graphviz/libtcldot.so.0.0.0
-/usr/lib64/tcl8.6/graphviz/libtcldot_builtin.so
-/usr/lib64/tcl8.6/graphviz/libtcldot_builtin.so.0
-/usr/lib64/tcl8.6/graphviz/libtcldot_builtin.so.0.0.0
-/usr/lib64/tcl8.6/graphviz/libtclplan.so
-/usr/lib64/tcl8.6/graphviz/libtclplan.so.0
-/usr/lib64/tcl8.6/graphviz/libtclplan.so.0.0.0
 /usr/lib64/tcl8.6/graphviz/pkgIndex.tcl
 
 %files bin
@@ -586,3 +554,45 @@ rm -rf %{buildroot}
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/*.so.*
+/usr/lib64/graphviz/libgvplugin_core.so
+/usr/lib64/graphviz/libgvplugin_core.so.6
+/usr/lib64/graphviz/libgvplugin_core.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_dot_layout.so
+/usr/lib64/graphviz/libgvplugin_dot_layout.so.6
+/usr/lib64/graphviz/libgvplugin_dot_layout.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_gdk.so
+/usr/lib64/graphviz/libgvplugin_gdk.so.6
+/usr/lib64/graphviz/libgvplugin_gdk.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_gtk.so
+/usr/lib64/graphviz/libgvplugin_gtk.so.6
+/usr/lib64/graphviz/libgvplugin_gtk.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_neato_layout.so
+/usr/lib64/graphviz/libgvplugin_neato_layout.so.6
+/usr/lib64/graphviz/libgvplugin_neato_layout.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_pango.so
+/usr/lib64/graphviz/libgvplugin_pango.so.6
+/usr/lib64/graphviz/libgvplugin_pango.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_rsvg.so
+/usr/lib64/graphviz/libgvplugin_rsvg.so.6
+/usr/lib64/graphviz/libgvplugin_rsvg.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_xlib.so
+/usr/lib64/graphviz/libgvplugin_xlib.so.6
+/usr/lib64/graphviz/libgvplugin_xlib.so.6.0.0
+/usr/lib64/graphviz/tcl/libtcldot.so
+/usr/lib64/graphviz/tcl/libtcldot.so.0
+/usr/lib64/graphviz/tcl/libtcldot.so.0.0.0
+/usr/lib64/graphviz/tcl/libtcldot_builtin.so
+/usr/lib64/graphviz/tcl/libtcldot_builtin.so.0
+/usr/lib64/graphviz/tcl/libtcldot_builtin.so.0.0.0
+/usr/lib64/graphviz/tcl/libtclplan.so
+/usr/lib64/graphviz/tcl/libtclplan.so.0
+/usr/lib64/graphviz/tcl/libtclplan.so.0.0.0
+/usr/lib64/tcl8.6/graphviz/libtcldot.so
+/usr/lib64/tcl8.6/graphviz/libtcldot.so.0
+/usr/lib64/tcl8.6/graphviz/libtcldot.so.0.0.0
+/usr/lib64/tcl8.6/graphviz/libtcldot_builtin.so
+/usr/lib64/tcl8.6/graphviz/libtcldot_builtin.so.0
+/usr/lib64/tcl8.6/graphviz/libtcldot_builtin.so.0.0.0
+/usr/lib64/tcl8.6/graphviz/libtclplan.so
+/usr/lib64/tcl8.6/graphviz/libtclplan.so.0
+/usr/lib64/tcl8.6/graphviz/libtclplan.so.0.0.0
