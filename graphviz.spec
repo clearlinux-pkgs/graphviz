@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.38.0
-Release  : 9
+Release  : 10
 URL      : http://graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
 Source0  : http://graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
 Summary  : Graph Visualization Tools
@@ -29,6 +29,7 @@ BuildRequires : pkgconfig(gdk-pixbuf-2.0)
 BuildRequires : pkgconfig(gtk+-2.0)
 BuildRequires : pkgconfig(libR)
 BuildRequires : pkgconfig(librsvg-2.0)
+BuildRequires : pkgconfig(libwebp)
 BuildRequires : pkgconfig(pangocairo)
 BuildRequires : pkgconfig(pangoft2)
 BuildRequires : pkgconfig(xrender)
@@ -89,6 +90,7 @@ lib components for the graphviz package.
 %setup -q -n graphviz-2.38.0
 
 %build
+export LANG=C
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
