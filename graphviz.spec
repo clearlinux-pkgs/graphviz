@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.38.0
-Release  : 12
+Release  : 13
 URL      : http://graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
 Source0  : http://graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
 Summary  : Graph Visualization Tools
