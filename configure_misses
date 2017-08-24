@@ -1,0 +1,57 @@
+Configure miss: gsort
+Configure miss: sys/fpu.h usability
+Configure miss: sys/fpu.h presence
+Configure miss: sys/fpu.h
+Configure miss: bool
+Configure miss: struct dioattr
+Configure miss: basename in -lgen
+Configure miss: _sysconf
+Configure miss: cbrt
+Configure miss: lsqrt
+Configure miss: pow
+Configure miss: sqrt
+Configure miss: dld_link in -ldld
+Configure miss: _ prefix in compiled symbols
+Configure miss: sys/dl.h
+Configure miss: dld.h
+Configure miss: mach-o/dyld.h
+Configure miss: swig
+Configure miss: wish8.6
+Configure miss: wish8.5
+Configure miss: wish8.4
+Configure miss: wish8.3
+Configure miss: wish
+Configure miss: expat-config
+Configure miss: IL/il.h usability
+Configure miss: IL/il.h presence
+Configure miss: IL/il.h
+Configure miss: main in -lIL
+Configure miss: main in -lXpm
+Configure miss: X11/Xaw/Text.h
+Configure miss: deflateBound
+Configure miss: POPPLER
+Configure miss: ghostscript/iapi.h usability
+Configure miss: ghostscript/iapi.h presence
+Configure miss: ghostscript/iapi.h
+Configure miss: LASI
+Configure miss: GTKGL
+Configure miss: GTKGLEXT
+Configure miss: GTS
+Configure miss: ANN
+Configure miss: GLADE
+Configure miss: qmake-qt4
+Configure miss: qmake-qt3
+Configure miss: qmake
+Configure miss: main in -lgd
+Configure miss: GL/glut.h usability
+Configure miss: GL/glut.h presence
+Configure miss: GL/glut.h
+Configure miss: if FILE struct contains _cnt
+Configure miss: if FILE struct contains _r
+Configure miss: if FILE struct contains _next
+Configure miss: if assert needs __eprintf
+Configure miss: dld_link in -ldld
+Configure miss: _ prefix in compiled symbols
+Configure miss: sys/dl.h
+Configure miss: dld.h
+Configure miss: mach-o/dyld.h

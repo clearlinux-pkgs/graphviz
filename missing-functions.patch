@@ -1,0 +1,29 @@
+The 'iffe' script does not seem to reliably detect that certain functions are
+available in installed libraries. Upstream is beginning to move these checks
+into configure.ac, but in the meantime, disable checks for functions that are
+known absent and break the build.
+
+
+diff -ru graphviz-2.38.0/lib/sfio/features/sfio graphviz-2.38.0~/lib/sfio/features/sfio
+--- graphviz-2.38.0/lib/sfio/features/sfio	2014-04-13 13:40:25.000000000 -0700
++++ graphviz-2.38.0~/lib/sfio/features/sfio	2017-08-24 00:01:43.374124524 -0700
+@@ -11,8 +11,6 @@
+ 
+ hdr string
+ hdr math
+-lib qfrexp
+-lib qldexp
+ 
+ hdr unistd
+ hdr values
+diff -ru graphviz-2.38.0/lib/vmalloc/features/vmalloc graphviz-2.38.0~/lib/vmalloc/features/vmalloc
+--- graphviz-2.38.0/lib/vmalloc/features/vmalloc	2014-04-13 13:40:25.000000000 -0700
++++ graphviz-2.38.0~/lib/vmalloc/features/vmalloc	2017-08-23 23:15:11.427649743 -0700
+@@ -15,7 +15,6 @@
+ hdr malloc
+ lib mallopt
+ lib mallinfo
+-lib mstats
+ hdr alloca
+ hdr dlfcn
+ 

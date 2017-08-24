@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.38.0
-Release  : 13
+Release  : 14
 URL      : http://graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
 Source0  : http://graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
 Summary  : Graph Visualization Tools
@@ -35,6 +35,7 @@ BuildRequires : pkgconfig(pangoft2)
 BuildRequires : pkgconfig(xrender)
 BuildRequires : tcl
 BuildRequires : tcl-dev
+Patch1: missing-functions.patch
 
 %description
 A collection of tools for the manipulation and layout
@@ -88,13 +89,19 @@ lib components for the graphviz package.
 
 %prep
 %setup -q -n graphviz-2.38.0
+%patch1 -p1
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
+export SOURCE_DATE_EPOCH=1503558594
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
 %install
+export SOURCE_DATE_EPOCH=1503558594
 rm -rf %{buildroot}
 %make_install
 
@@ -544,8 +551,18 @@ rm -rf %{buildroot}
 /usr/include/graphviz/types.h
 /usr/include/graphviz/usershape.h
 /usr/include/graphviz/xdot.h
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libcdt.so
+/usr/lib64/libcgraph.so
+/usr/lib64/libgvc.so
+/usr/lib64/libgvpr.so
+/usr/lib64/libpathplan.so
+/usr/lib64/libxdot.so
+/usr/lib64/pkgconfig/libcdt.pc
+/usr/lib64/pkgconfig/libcgraph.pc
+/usr/lib64/pkgconfig/libgvc.pc
+/usr/lib64/pkgconfig/libgvpr.pc
+/usr/lib64/pkgconfig/libpathplan.pc
+/usr/lib64/pkgconfig/libxdot.pc
 
 %files doc
 %defattr(-,root,root,-)
@@ -555,7 +572,6 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
 /usr/lib64/graphviz/libgvplugin_core.so
 /usr/lib64/graphviz/libgvplugin_core.so.6
 /usr/lib64/graphviz/libgvplugin_core.so.6.0.0
@@ -589,6 +605,18 @@ rm -rf %{buildroot}
 /usr/lib64/graphviz/tcl/libtclplan.so
 /usr/lib64/graphviz/tcl/libtclplan.so.0
 /usr/lib64/graphviz/tcl/libtclplan.so.0.0.0
+/usr/lib64/libcdt.so.5
+/usr/lib64/libcdt.so.5.0.0
+/usr/lib64/libcgraph.so.6
+/usr/lib64/libcgraph.so.6.0.0
+/usr/lib64/libgvc.so.6
+/usr/lib64/libgvc.so.6.0.0
+/usr/lib64/libgvpr.so.2
+/usr/lib64/libgvpr.so.2.0.0
+/usr/lib64/libpathplan.so.4
+/usr/lib64/libpathplan.so.4.0.0
+/usr/lib64/libxdot.so.4
+/usr/lib64/libxdot.so.4.0.0
 /usr/lib64/tcl8.6/graphviz/libtcldot.so
 /usr/lib64/tcl8.6/graphviz/libtcldot.so.0
 /usr/lib64/tcl8.6/graphviz/libtcldot.so.0.0.0
