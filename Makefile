@@ -1,5 +1,5 @@
 PKG_NAME := graphviz
-URL := http://graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
-
+URL = https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
+ARCHIVES = 
 
 include ../common/Makefile.common
