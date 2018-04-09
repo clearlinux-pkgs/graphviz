@@ -1,0 +1,1 @@
+install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
