@@ -8,3 +8,5 @@ gtk+-dev
 libXt-dev
 tcl
 tcl-dev
+flex
+bison

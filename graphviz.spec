@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.40.1
-Release  : 16
+Release  : 17
 URL      : https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -38,6 +38,7 @@ BuildRequires : pkgconfig(xrender)
 BuildRequires : tcl
 BuildRequires : tcl-dev
 Patch1: missing-functions.patch
+Patch2: 0001-add-config6-file.patch
 
 %description
 Graphviz - Graph Drawing Programs from AT&T Research and Lucent Bell Labs
@@ -92,23 +93,28 @@ lib components for the graphviz package.
 %prep
 %setup -q -n graphviz-stable_release_2.40.1-67cd2e5121379a38e0801cc05cce5033f8a2a609
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523310074
+export SOURCE_DATE_EPOCH=1523313919
 %autogen --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1523310074
+export SOURCE_DATE_EPOCH=1523313919
 rm -rf %{buildroot}
 %make_install
+## make_install_append content
+install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
+/usr/lib64/graphviz/config6
 /usr/lib64/graphviz/tcl/pkgIndex.tcl
 /usr/lib64/tcl8.6/graphviz/pkgIndex.tcl
 
