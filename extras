@@ -37,3 +37,6 @@
 /usr/lib64/graphviz/libgvplugin_rsvg.so
 /usr/lib64/graphviz/libgvplugin_rsvg.so.6
 /usr/lib64/graphviz/libgvplugin_rsvg.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_gd.so
+/usr/lib64/graphviz/libgvplugin_gd.so.6
+/usr/lib64/graphviz/libgvplugin_gd.so.6.0.0
