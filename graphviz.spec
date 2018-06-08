@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 1
-Release  : 20
+Release  : 21
 URL      : https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -110,12 +110,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528470817
+export SOURCE_DATE_EPOCH=1528471176
 %autogen --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1528470817
+export SOURCE_DATE_EPOCH=1528471176
 rm -rf %{buildroot}
 %make_install
 ## make_install_append content
@@ -609,6 +609,9 @@ install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
 /usr/lib64/graphviz/libgvplugin_pango.so
 /usr/lib64/graphviz/libgvplugin_pango.so.6
 /usr/lib64/graphviz/libgvplugin_pango.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_rsvg.so
+/usr/lib64/graphviz/libgvplugin_rsvg.so.6
+/usr/lib64/graphviz/libgvplugin_rsvg.so.6.0.0
 /usr/lib64/graphviz/libgvplugin_xlib.so
 /usr/lib64/graphviz/libgvplugin_xlib.so.6
 /usr/lib64/graphviz/libgvplugin_xlib.so.6.0.0
@@ -647,6 +650,9 @@ install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
 %exclude /usr/lib64/graphviz/libgvplugin_pango.so
 %exclude /usr/lib64/graphviz/libgvplugin_pango.so.6
 %exclude /usr/lib64/graphviz/libgvplugin_pango.so.6.0.0
+%exclude /usr/lib64/graphviz/libgvplugin_rsvg.so
+%exclude /usr/lib64/graphviz/libgvplugin_rsvg.so.6
+%exclude /usr/lib64/graphviz/libgvplugin_rsvg.so.6.0.0
 %exclude /usr/lib64/graphviz/libgvplugin_xlib.so
 %exclude /usr/lib64/graphviz/libgvplugin_xlib.so.6
 %exclude /usr/lib64/graphviz/libgvplugin_xlib.so.6.0.0
@@ -685,9 +691,6 @@ install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
 /usr/lib64/graphviz/libgvplugin_neato_layout.so
 /usr/lib64/graphviz/libgvplugin_neato_layout.so.6
 /usr/lib64/graphviz/libgvplugin_neato_layout.so.6.0.0
-/usr/lib64/graphviz/libgvplugin_rsvg.so
-/usr/lib64/graphviz/libgvplugin_rsvg.so.6
-/usr/lib64/graphviz/libgvplugin_rsvg.so.6.0.0
 /usr/lib64/graphviz/tcl/libgdtclft.so
 /usr/lib64/libcdt.so.5
 /usr/lib64/libcdt.so.5.0.0
