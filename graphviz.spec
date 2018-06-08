@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 1
-Release  : 19
+Release  : 20
 URL      : https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -110,12 +110,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528469876
+export SOURCE_DATE_EPOCH=1528470817
 %autogen --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1528469876
+export SOURCE_DATE_EPOCH=1528470817
 rm -rf %{buildroot}
 %make_install
 ## make_install_append content
@@ -130,6 +130,7 @@ install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
 
 %files bin
 %defattr(-,root,root,-)
+%exclude /usr/bin/dot_builtins
 /usr/bin/acyclic
 /usr/bin/bcomps
 /usr/bin/ccomps
@@ -139,7 +140,6 @@ install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
 /usr/bin/dijkstra
 /usr/bin/dot
 /usr/bin/dot2gxl
-/usr/bin/dot_builtins
 /usr/bin/dotty
 /usr/bin/edgepaint
 /usr/bin/fdp
@@ -599,6 +599,7 @@ install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
 
 %files extras
 %defattr(-,root,root,-)
+/usr/bin/dot_builtins
 /usr/lib64/graphviz/libgvplugin_gdk.so
 /usr/lib64/graphviz/libgvplugin_gdk.so.6
 /usr/lib64/graphviz/libgvplugin_gdk.so.6.0.0
