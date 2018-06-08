@@ -1,14 +1,13 @@
 # This file contains recursive sources that require this package
 Keras
+Keras_Applications
+Keras_Preprocessing
 LVM2
-R-IRkernel
 R-NMF
-R-RcppProgress
 R-devtools
 R-doRNG
 R-git2r
 R-modelr
-R-pbdZMQ
 R-pkgmaker
 R-reprex
 R-rngtools
@@ -24,8 +23,10 @@ babl
 cargo
 cgit
 cheese
+clr-init
 comedilib
 compat-gegl
+compat-gegl-0.3
 cppunit
 dracut
 dstat
@@ -47,17 +48,16 @@ gnome-terminal
 gpgme
 gst-plugins-good
 gtk+
-gtk3
 gvim
 hamlib
 hexchat
 hyperscan
-inputproto
 isa-l
 kmod
 libXi
 libgfortran-avx
 libgfortran-compat-soname3
+libgfortran-compat-soname4
 libinput
 libjpeg-turbo
 libjpeg-turbo-soname8
@@ -65,10 +65,12 @@ libmediaart
 libnl
 liboauth
 librsvg
+libsmbios
 libvirt
 libvpx
 libxcb
 libxkbcommon
+libzmq
 linux
 linux-aws
 linux-gce
@@ -77,6 +79,7 @@ linux-hyperv-lts
 linux-hyperv-mini
 linux-kvm
 linux-lts
+linux-oracle
 linux-pk414
 linux-tools
 moka-icon-theme
@@ -95,6 +98,7 @@ ruby
 rustc
 spice
 spice-gtk
+subversion
 swig
 syslinux
 tigervnc
@@ -109,6 +113,8 @@ weechat
 xcb-util
 xcb-util-image
 xcb-util-keysyms
+xcb-util-renderutil
 xcb-util-wm
+xcb-util-xrm
 xf86-input-wacom
 xorg-server

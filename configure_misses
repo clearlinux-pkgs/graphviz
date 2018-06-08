@@ -27,7 +27,7 @@ Configure miss: ann
 Configure miss: libglade-2.0
 Configure miss: qmake-qt4
 Configure miss: qmake-qt3
-Configure miss: qmake
+Configure miss: QtCore
 Configure miss: GL/glut.h usability
 Configure miss: GL/glut.h presence
 Configure miss: GL/glut.h
@@ -65,7 +65,7 @@ Configure miss: ann
 Configure miss: libglade-2.0
 Configure miss: qmake-qt4
 Configure miss: qmake-qt3
-Configure miss: qmake
+Configure miss: QtCore
 Configure miss: GL/glut.h usability
 Configure miss: GL/glut.h presence
 Configure miss: GL/glut.h
