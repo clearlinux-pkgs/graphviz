@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 1
-Release  : 24
+Release  : 25
 URL      : https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -13,7 +13,7 @@ License  : BSD-2-Clause BSD-3-Clause CPL-1.0 EPL-1.0
 Requires: graphviz-bin
 Requires: graphviz-lib
 Requires: graphviz-data
-Requires: graphviz-man
+Requires: graphviz-doc
 BuildRequires : bison
 BuildRequires : expat-dev
 BuildRequires : flex
@@ -39,7 +39,6 @@ BuildRequires : qtbase-extras
 BuildRequires : tcl
 BuildRequires : tcl-dev
 Patch1: missing-functions.patch
-Patch2: 0001-add-config6-file.patch
 
 %description
 Graphviz - Graph Drawing Programs from AT&T Research and Lucent Bell Labs
@@ -49,7 +48,6 @@ See doc/build.html for prerequisites and detailed build notes.
 Summary: bin components for the graphviz package.
 Group: Binaries
 Requires: graphviz-data
-Requires: graphviz-man
 
 %description bin
 bin components for the graphviz package.
@@ -75,6 +73,14 @@ Provides: graphviz-devel
 dev components for the graphviz package.
 
 
+%package doc
+Summary: doc components for the graphviz package.
+Group: Documentation
+
+%description doc
+doc components for the graphviz package.
+
+
 %package extras
 Summary: extras components for the graphviz package.
 Group: Default
@@ -92,39 +98,26 @@ Requires: graphviz-data
 lib components for the graphviz package.
 
 
-%package man
-Summary: man components for the graphviz package.
-Group: Default
-
-%description man
-man components for the graphviz package.
-
-
 %prep
 %setup -q -n graphviz-stable_release_2.40.1-67cd2e5121379a38e0801cc05cce5033f8a2a609
 %patch1 -p1
-%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528486444
+export SOURCE_DATE_EPOCH=1529009211
 %autogen --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1528486444
+export SOURCE_DATE_EPOCH=1529009211
 rm -rf %{buildroot}
 %make_install
-## make_install_append content
-install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
-## make_install_append end
 
 %files
 %defattr(-,root,root,-)
-/usr/lib64/graphviz/config6
 /usr/lib64/graphviz/tcl/pkgIndex.tcl
 /usr/lib64/tcl8.6/graphviz/pkgIndex.tcl
 
@@ -597,6 +590,12 @@ install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
 /usr/lib64/pkgconfig/libpathplan.pc
 /usr/lib64/pkgconfig/libxdot.pc
 
+%files doc
+%defattr(0644,root,root,0755)
+%doc /usr/share/man/man1/*
+%doc /usr/share/man/man3/*
+%doc /usr/share/man/man7/*
+
 %files extras
 %defattr(-,root,root,-)
 /usr/bin/diffimg
@@ -711,57 +710,3 @@ install -p -D -m 644 config6 %{buildroot}/usr/lib64/graphviz/config6
 /usr/lib64/libpathplan.so.4.0.0
 /usr/lib64/libxdot.so.4
 /usr/lib64/libxdot.so.4.0.0
-
-%files man
-%defattr(-,root,root,-)
-/usr/share/man/man1/acyclic.1
-/usr/share/man/man1/bcomps.1
-/usr/share/man/man1/ccomps.1
-/usr/share/man/man1/circo.1
-/usr/share/man/man1/cluster.1
-/usr/share/man/man1/diffimg.1
-/usr/share/man/man1/dijkstra.1
-/usr/share/man/man1/dot.1
-/usr/share/man/man1/dotty.1
-/usr/share/man/man1/edgepaint.1
-/usr/share/man/man1/fdp.1
-/usr/share/man/man1/gc.1
-/usr/share/man/man1/gml2gv.1
-/usr/share/man/man1/graphml2gv.1
-/usr/share/man/man1/gv2gml.1
-/usr/share/man/man1/gv2gxl.1
-/usr/share/man/man1/gvcolor.1
-/usr/share/man/man1/gvgen.1
-/usr/share/man/man1/gvmap.1
-/usr/share/man/man1/gvmap.sh.1
-/usr/share/man/man1/gvpack.1
-/usr/share/man/man1/gvpr.1
-/usr/share/man/man1/gxl2gv.1
-/usr/share/man/man1/lefty.1
-/usr/share/man/man1/lneato.1
-/usr/share/man/man1/mingle.1
-/usr/share/man/man1/mm2gv.1
-/usr/share/man/man1/neato.1
-/usr/share/man/man1/nop.1
-/usr/share/man/man1/osage.1
-/usr/share/man/man1/patchwork.1
-/usr/share/man/man1/prune.1
-/usr/share/man/man1/sccmap.1
-/usr/share/man/man1/sfdp.1
-/usr/share/man/man1/smyrna.1
-/usr/share/man/man1/tred.1
-/usr/share/man/man1/twopi.1
-/usr/share/man/man1/unflatten.1
-/usr/share/man/man1/vimdot.1
-/usr/share/man/man3/cdt.3
-/usr/share/man/man3/cgraph.3
-/usr/share/man/man3/expr.3
-/usr/share/man/man3/gdtclft.3tcl
-/usr/share/man/man3/gvc.3
-/usr/share/man/man3/gvpr.3
-/usr/share/man/man3/lab_gamut.3
-/usr/share/man/man3/pack.3
-/usr/share/man/man3/pathplan.3
-/usr/share/man/man3/tcldot.3tcl
-/usr/share/man/man3/xdot.3
-/usr/share/man/man7/graphviz.7
