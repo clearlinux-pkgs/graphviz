@@ -4,13 +4,14 @@
 #
 Name     : graphviz
 Version  : 1
-Release  : 25
+Release  : 26
 URL      : https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/repository/stable_release_2.40.1/archive.tar.gz
 Summary  : Library for parsing graphs in xdot format
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CPL-1.0 EPL-1.0
 Requires: graphviz-bin
+Requires: graphviz-config
 Requires: graphviz-lib
 Requires: graphviz-data
 Requires: graphviz-doc
@@ -39,6 +40,7 @@ BuildRequires : qtbase-extras
 BuildRequires : tcl
 BuildRequires : tcl-dev
 Patch1: missing-functions.patch
+Patch2: 0001-Move-config-path-to-var-lib-graphviz.patch
 
 %description
 Graphviz - Graph Drawing Programs from AT&T Research and Lucent Bell Labs
@@ -48,9 +50,18 @@ See doc/build.html for prerequisites and detailed build notes.
 Summary: bin components for the graphviz package.
 Group: Binaries
 Requires: graphviz-data
+Requires: graphviz-config
 
 %description bin
 bin components for the graphviz package.
+
+
+%package config
+Summary: config components for the graphviz package.
+Group: Default
+
+%description config
+config components for the graphviz package.
 
 
 %package data
@@ -101,20 +112,24 @@ lib components for the graphviz package.
 %prep
 %setup -q -n graphviz-stable_release_2.40.1-67cd2e5121379a38e0801cc05cce5033f8a2a609
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1529009211
+export SOURCE_DATE_EPOCH=1529013050
 %autogen --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1529009211
+export SOURCE_DATE_EPOCH=1529013050
 rm -rf %{buildroot}
 %make_install
+## make_install_append content
+install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -162,6 +177,10 @@ rm -rf %{buildroot}
 /usr/bin/twopi
 /usr/bin/unflatten
 /usr/bin/vimdot
+
+%files config
+%defattr(-,root,root,-)
+/usr/lib/tmpfiles.d/graphviz.conf
 
 %files data
 %defattr(-,root,root,-)
