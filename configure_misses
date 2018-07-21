@@ -36,6 +36,7 @@ Configure miss: if FILE struct contains _r
 Configure miss: if FILE struct contains _next
 Configure miss: if assert needs __eprintf
 Configure miss: main in -lcriterion
+Configure miss: whether a statically linked program can dlopen itself
 Configure miss: gsort
 Configure miss: basename in -lgen
 Configure miss: cbrt
@@ -74,6 +75,7 @@ Configure miss: if FILE struct contains _r
 Configure miss: if FILE struct contains _next
 Configure miss: if assert needs __eprintf
 Configure miss: main in -lcriterion
+Configure miss: whether a statically linked program can dlopen itself
 Configure miss: dld_link in -ldld
 Configure miss: _ prefix in compiled symbols
 Configure miss: sys/dl.h
