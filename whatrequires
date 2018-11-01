@@ -6,12 +6,15 @@ compat-gegl-0.3
 cppunit
 gcc
 gegl
+gpgme
 libgfortran-avx
 libgfortran-compat-soname3
 libgfortran-compat-soname4
 libinput
 libnl
 liboauth
+libopenzwave
+libsafec
 libsmbios
 libxcb
 libxkbcommon
@@ -22,6 +25,7 @@ ruby
 sof-crosstool-ng
 tigervnc
 v4l-utils
+varnish-cache
 wayland
 xcb-util
 xcb-util-image

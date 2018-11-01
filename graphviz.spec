@@ -4,18 +4,18 @@
 #
 Name     : graphviz
 Version  : stable.2.40.1
-Release  : 27
+Release  : 28
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/stable_release_2.40.1/graphviz-stable_release_2.40.1.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/stable_release_2.40.1/graphviz-stable_release_2.40.1.tar.gz
 Summary  : Library for parsing graphs in xdot format
 Group    : Development/Tools
 License  : BSD-2-Clause CPL-1.0 EPL-1.0 MIT
-Requires: graphviz-bin
-Requires: graphviz-config
-Requires: graphviz-lib
-Requires: graphviz-license
-Requires: graphviz-data
-Requires: graphviz-man
+Requires: graphviz-bin = %{version}-%{release}
+Requires: graphviz-config = %{version}-%{release}
+Requires: graphviz-data = %{version}-%{release}
+Requires: graphviz-lib = %{version}-%{release}
+Requires: graphviz-license = %{version}-%{release}
+Requires: graphviz-man = %{version}-%{release}
 BuildRequires : bison
 BuildRequires : buildreq-golang
 BuildRequires : buildreq-qmake
@@ -44,6 +44,7 @@ BuildRequires : tcl
 BuildRequires : tcl-dev
 Patch1: missing-functions.patch
 Patch2: 0001-Move-config-path-to-var-lib-graphviz.patch
+Patch3: CVE-2018-10196.patch
 
 %description
 Graphviz - Graph Drawing Programs from AT&T Research and Lucent Bell Labs
@@ -52,10 +53,10 @@ See doc/build.html for prerequisites and detailed build notes.
 %package bin
 Summary: bin components for the graphviz package.
 Group: Binaries
-Requires: graphviz-data
-Requires: graphviz-config
-Requires: graphviz-license
-Requires: graphviz-man
+Requires: graphviz-data = %{version}-%{release}
+Requires: graphviz-config = %{version}-%{release}
+Requires: graphviz-license = %{version}-%{release}
+Requires: graphviz-man = %{version}-%{release}
 
 %description bin
 bin components for the graphviz package.
@@ -80,22 +81,13 @@ data components for the graphviz package.
 %package dev
 Summary: dev components for the graphviz package.
 Group: Development
-Requires: graphviz-lib
-Requires: graphviz-bin
-Requires: graphviz-data
-Provides: graphviz-devel
+Requires: graphviz-lib = %{version}-%{release}
+Requires: graphviz-bin = %{version}-%{release}
+Requires: graphviz-data = %{version}-%{release}
+Provides: graphviz-devel = %{version}-%{release}
 
 %description dev
 dev components for the graphviz package.
-
-
-%package doc
-Summary: doc components for the graphviz package.
-Group: Documentation
-Requires: graphviz-man
-
-%description doc
-doc components for the graphviz package.
 
 
 %package extras
@@ -109,8 +101,8 @@ extras components for the graphviz package.
 %package lib
 Summary: lib components for the graphviz package.
 Group: Libraries
-Requires: graphviz-data
-Requires: graphviz-license
+Requires: graphviz-data = %{version}-%{release}
+Requires: graphviz-license = %{version}-%{release}
 
 %description lib
 lib components for the graphviz package.
@@ -136,31 +128,36 @@ man components for the graphviz package.
 %setup -q -n graphviz-stable_release_2.40.1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532132536
+export SOURCE_DATE_EPOCH=1541096613
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 %autogen --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1532132536
+export SOURCE_DATE_EPOCH=1541096613
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/graphviz
-cp COPYING %{buildroot}/usr/share/doc/graphviz/COPYING
-cp LICENSE %{buildroot}/usr/share/doc/graphviz/LICENSE
-cp contrib/java-dot/license.txt %{buildroot}/usr/share/doc/graphviz/contrib_java-dot_license.txt
-cp debian/copyright %{buildroot}/usr/share/doc/graphviz/debian_copyright
-cp lib/rbtree/LICENSE %{buildroot}/usr/share/doc/graphviz/lib_rbtree_LICENSE
-cp macosx/build/English.lproj/License.rtf %{buildroot}/usr/share/doc/graphviz/macosx_build_English.lproj_License.rtf
-cp plugin.demo/xgtk/COPYING %{buildroot}/usr/share/doc/graphviz/plugin.demo_xgtk_COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
+cp COPYING %{buildroot}/usr/share/package-licenses/graphviz/COPYING
+cp LICENSE %{buildroot}/usr/share/package-licenses/graphviz/LICENSE
+cp contrib/java-dot/license.txt %{buildroot}/usr/share/package-licenses/graphviz/contrib_java-dot_license.txt
+cp debian/copyright %{buildroot}/usr/share/package-licenses/graphviz/debian_copyright
+cp lib/rbtree/LICENSE %{buildroot}/usr/share/package-licenses/graphviz/lib_rbtree_LICENSE
+cp macosx/build/English.lproj/License.rtf %{buildroot}/usr/share/package-licenses/graphviz/macosx_build_English.lproj_License.rtf
+cp plugin.demo/xgtk/COPYING %{buildroot}/usr/share/package-licenses/graphviz/plugin.demo_xgtk_COPYING
 %make_install
-## make_install_append content
+## install_append content
 install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
-## make_install_append end
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -639,10 +636,17 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/lib64/pkgconfig/liblab_gamut.pc
 /usr/lib64/pkgconfig/libpathplan.pc
 /usr/lib64/pkgconfig/libxdot.pc
-
-%files doc
-%defattr(0644,root,root,0755)
-%doc /usr/share/doc/graphviz/*
+/usr/share/man/man3/cdt.3
+/usr/share/man/man3/cgraph.3
+/usr/share/man/man3/expr.3
+/usr/share/man/man3/gdtclft.3tcl
+/usr/share/man/man3/gvc.3
+/usr/share/man/man3/gvpr.3
+/usr/share/man/man3/lab_gamut.3
+/usr/share/man/man3/pack.3
+/usr/share/man/man3/pathplan.3
+/usr/share/man/man3/tcldot.3tcl
+/usr/share/man/man3/xdot.3
 
 %files extras
 %defattr(-,root,root,-)
@@ -760,15 +764,17 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/lib64/libxdot.so.4.0.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/graphviz/COPYING
-/usr/share/doc/graphviz/LICENSE
-/usr/share/doc/graphviz/contrib_java-dot_license.txt
-/usr/share/doc/graphviz/lib_rbtree_LICENSE
-/usr/share/doc/graphviz/plugin.demo_xgtk_COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/graphviz/COPYING
+/usr/share/package-licenses/graphviz/LICENSE
+/usr/share/package-licenses/graphviz/contrib_java-dot_license.txt
+/usr/share/package-licenses/graphviz/debian_copyright
+/usr/share/package-licenses/graphviz/lib_rbtree_LICENSE
+/usr/share/package-licenses/graphviz/macosx_build_English.lproj_License.rtf
+/usr/share/package-licenses/graphviz/plugin.demo_xgtk_COPYING
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/acyclic.1
 /usr/share/man/man1/bcomps.1
 /usr/share/man/man1/ccomps.1
@@ -808,15 +814,4 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/share/man/man1/twopi.1
 /usr/share/man/man1/unflatten.1
 /usr/share/man/man1/vimdot.1
-/usr/share/man/man3/cdt.3
-/usr/share/man/man3/cgraph.3
-/usr/share/man/man3/expr.3
-/usr/share/man/man3/gdtclft.3tcl
-/usr/share/man/man3/gvc.3
-/usr/share/man/man3/gvpr.3
-/usr/share/man/man3/lab_gamut.3
-/usr/share/man/man3/pack.3
-/usr/share/man/man3/pathplan.3
-/usr/share/man/man3/tcldot.3tcl
-/usr/share/man/man3/xdot.3
 /usr/share/man/man7/graphviz.7
