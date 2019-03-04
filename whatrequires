@@ -1,4 +1,5 @@
 # This file contains recursive sources that require this package
+FreeCAD
 Theano
 asciidoc
 compat-gegl
@@ -16,22 +17,22 @@ liboauth
 libopenzwave
 libsafec
 libsmbios
-libxcb
+libvdpau
+libxdg-basedir
 libxkbcommon
+netcdf
 open-vm-tools
+openjdk10
+openjdk11
 opus
 opusfile
+pyside2-setup
 ruby
 sof-crosstool-ng
 tigervnc
 v4l-utils
 varnish-cache
 wayland
-xcb-util
-xcb-util-image
-xcb-util-keysyms
-xcb-util-renderutil
-xcb-util-wm
 xcb-util-xrm
 xf86-input-wacom
 xorg-server
