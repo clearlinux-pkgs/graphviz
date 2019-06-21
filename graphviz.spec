@@ -4,10 +4,10 @@
 #
 Name     : graphviz
 Version  : stable.2.40.1
-Release  : 30
+Release  : 31
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/stable_release_2.40.1/graphviz-stable_release_2.40.1.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/stable_release_2.40.1/graphviz-stable_release_2.40.1.tar.gz
-Summary  : Graph visualization software
+Summary  : Library for parsing graphs in xdot format
 Group    : Development/Tools
 License  : BSD-2-Clause CPL-1.0 EPL-1.0 MIT
 Requires: graphviz-bin = %{version}-%{release}
@@ -18,7 +18,6 @@ Requires: graphviz-license = %{version}-%{release}
 Requires: graphviz-man = %{version}-%{release}
 BuildRequires : bison
 BuildRequires : buildreq-golang
-BuildRequires : buildreq-qmake
 BuildRequires : expat-dev
 BuildRequires : flex
 BuildRequires : freeglut-dev
@@ -45,16 +44,11 @@ BuildRequires : tcl-dev
 Patch1: missing-functions.patch
 Patch2: 0001-Move-config-path-to-var-lib-graphviz.patch
 Patch3: CVE-2018-10196.patch
+Patch4: CVE-2019-11023.patch
 
 %description
-$Id$
-Introduction
-============
-prune reads directed graphs in the same format used by dot(1) and
-removes subgraphs rooted at nodes specified on the commandline via
-options. These nodes themselves will not be removed, but can be given
-attributes so that they can be easily located by a graph stream editor
-such as gvpr(1).
+Graphviz - Graph Drawing Programs from AT&T Research and Lucent Bell Labs
+See doc/build.html for prerequisites and detailed build notes.
 
 %package bin
 Summary: bin components for the graphviz package.
@@ -89,7 +83,6 @@ Group: Development
 Requires: graphviz-lib = %{version}-%{release}
 Requires: graphviz-bin = %{version}-%{release}
 Requires: graphviz-data = %{version}-%{release}
-Requires: graphviz-man = %{version}-%{release}
 Provides: graphviz-devel = %{version}-%{release}
 Requires: graphviz = %{version}-%{release}
 
@@ -136,13 +129,15 @@ man components for the graphviz package.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551668915
+export SOURCE_DATE_EPOCH=1561080982
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -154,7 +149,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1551668915
+export SOURCE_DATE_EPOCH=1561080982
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
 cp COPYING %{buildroot}/usr/share/package-licenses/graphviz/COPYING

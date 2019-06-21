@@ -27,7 +27,7 @@ Configure miss: ann
 Configure miss: libglade-2.0
 Configure miss: qmake-qt4
 Configure miss: qmake-qt3
-Configure miss: QtCore
+Configure miss: qmake
 Configure miss: GL/glut.h usability
 Configure miss: GL/glut.h presence
 Configure miss: GL/glut.h
@@ -51,7 +51,6 @@ Configure miss: IL/il.h usability
 Configure miss: IL/il.h presence
 Configure miss: IL/il.h
 Configure miss: main in -lIL
-Configure miss: main in -lXpm
 Configure miss: X11/Xaw/Text.h
 Configure miss: deflateBound
 Configure miss: poppler-glib
@@ -66,7 +65,7 @@ Configure miss: ann
 Configure miss: libglade-2.0
 Configure miss: qmake-qt4
 Configure miss: qmake-qt3
-Configure miss: QtCore
+Configure miss: qmake
 Configure miss: GL/glut.h usability
 Configure miss: GL/glut.h presence
 Configure miss: GL/glut.h
