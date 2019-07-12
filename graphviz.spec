@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : stable.2.40.1
-Release  : 31
+Release  : 32
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/stable_release_2.40.1/graphviz-stable_release_2.40.1.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/stable_release_2.40.1/graphviz-stable_release_2.40.1.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -41,6 +41,7 @@ BuildRequires : pkgconfig(xpm)
 BuildRequires : pkgconfig(xrender)
 BuildRequires : tcl
 BuildRequires : tcl-dev
+BuildRequires : tcl-staticdev
 Patch1: missing-functions.patch
 Patch2: 0001-Move-config-path-to-var-lib-graphviz.patch
 Patch3: CVE-2018-10196.patch
@@ -135,8 +136,8 @@ man components for the graphviz package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1561080982
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562975287
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -149,7 +150,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1561080982
+export SOURCE_DATE_EPOCH=1562975287
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
 cp COPYING %{buildroot}/usr/share/package-licenses/graphviz/COPYING

@@ -4,10 +4,15 @@ Theano
 asciidoc
 compat-gegl
 compat-gegl-0.3
+conda
 cppunit
 gcc
+gcc7
+gcc8
 gegl
 gpgme
+imagescan
+libgeotiff
 libgfortran-avx
 libgfortran-compat-soname3
 libgfortran-compat-soname4
@@ -20,6 +25,7 @@ libsmbios
 libvdpau
 libxdg-basedir
 libxkbcommon
+log4cpp
 netcdf
 open-vm-tools
 openjdk10
@@ -28,7 +34,6 @@ opus
 opusfile
 pyside2-setup
 ruby
-sof-crosstool-ng
 tigervnc
 v4l-utils
 varnish-cache

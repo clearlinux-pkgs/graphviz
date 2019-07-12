@@ -12,7 +12,6 @@ Configure miss: IL/il.h usability
 Configure miss: IL/il.h presence
 Configure miss: IL/il.h
 Configure miss: main in -lIL
-Configure miss: main in -lXpm
 Configure miss: X11/Xaw/Text.h
 Configure miss: deflateBound
 Configure miss: poppler-glib
@@ -51,6 +50,7 @@ Configure miss: IL/il.h usability
 Configure miss: IL/il.h presence
 Configure miss: IL/il.h
 Configure miss: main in -lIL
+Configure miss: main in -lXpm
 Configure miss: X11/Xaw/Text.h
 Configure miss: deflateBound
 Configure miss: poppler-glib
