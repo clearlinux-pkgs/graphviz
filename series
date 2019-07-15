@@ -1,4 +1,4 @@
-missing-functions.patch
+#missing-functions.patch
 0001-Move-config-path-to-var-lib-graphviz.patch
-CVE-2018-10196.patch
-CVE-2019-11023.patch
+#CVE-2018-10196.patch
+#CVE-2019-11023.patch
