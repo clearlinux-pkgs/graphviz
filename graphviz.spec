@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : stable.2.42.0
-Release  : 33
+Release  : 34
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/stable_release_2.42.0/graphviz-stable_release_2.42.0.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/stable_release_2.42.0/graphviz-stable_release_2.42.0.tar.gz
 Summary  : Graph visualization software
@@ -140,7 +140,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1563200803
+export SOURCE_DATE_EPOCH=1563201362
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -153,7 +153,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fcf-protection=full -ffat-l
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1563200803
+export SOURCE_DATE_EPOCH=1563201362
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
 cp COPYING %{buildroot}/usr/share/package-licenses/graphviz/COPYING
@@ -177,6 +177,7 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 %defattr(-,root,root,-)
 %exclude /usr/bin/diffimg
 %exclude /usr/bin/dot_builtins
+%exclude /usr/bin/gvedit
 /usr/bin/acyclic
 /usr/bin/bcomps
 /usr/bin/ccomps
@@ -194,7 +195,6 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/bin/gv2gml
 /usr/bin/gv2gxl
 /usr/bin/gvcolor
-/usr/bin/gvedit
 /usr/bin/gvgen
 /usr/bin/gvmap
 /usr/bin/gvmap.sh
@@ -665,6 +665,7 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 %defattr(-,root,root,-)
 /usr/bin/diffimg
 /usr/bin/dot_builtins
+/usr/bin/gvedit
 /usr/lib64/graphviz/libgvplugin_gd.so
 /usr/lib64/graphviz/libgvplugin_gd.so.6
 /usr/lib64/graphviz/libgvplugin_gd.so.6.0.0
