@@ -1,4 +1,5 @@
 Configure miss: gsort
+Configure miss: windres
 Configure miss: off64_t
 Configure miss: struct stat64
 Configure miss: stat.h usability
@@ -45,6 +46,7 @@ Configure miss: if assert needs __eprintf
 Configure miss: main in -lcriterion
 Configure miss: whether a statically linked program can dlopen itself
 Configure miss: gsort
+Configure miss: windres
 Configure miss: off64_t
 Configure miss: struct stat64
 Configure miss: stat.h usability
