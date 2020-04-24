@@ -11,3 +11,5 @@ tcl-dev
 tcl-staticdev
 flex
 bison
+# for gvedit
+buildreq-qmake
