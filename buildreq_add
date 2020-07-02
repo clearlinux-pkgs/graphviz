@@ -1,15 +1,17 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-librsvg-dev
-freeglut-dev
-libgd-dev
+bison
 expat-dev
+flex
+freeglut-dev
+ghostscript
+groff
 gtk+-dev
 libXt-dev
+libgd-dev
+librsvg-dev
 tcl
 tcl-dev
 tcl-staticdev
-flex
-bison
 # for gvedit
 buildreq-qmake
