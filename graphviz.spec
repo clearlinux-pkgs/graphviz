@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.44.1
-Release  : 39
+Release  : 40
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/2.44.1/graphviz-2.44.1.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/2.44.1/graphviz-2.44.1.tar.gz
 Summary  : Library for parsing graphs in xdot format
