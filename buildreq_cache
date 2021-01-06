@@ -1,3 +1,4 @@
 2.44.1
 libwebp-dev
+llvm
 pkgconfig(xpm)

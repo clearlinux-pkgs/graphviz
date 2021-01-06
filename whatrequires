@@ -20,11 +20,9 @@ libinput
 libnl
 liboauth
 libopenzwave
-libsafec
 libsmbios
 libvdpau
 libxdg-basedir
-log4cpp
 mingw-gcc
 mkl-dnn
 netcdf

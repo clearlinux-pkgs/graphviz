@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.44.1
-Release  : 40
+Release  : 41
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/2.44.1/graphviz-2.44.1.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/2.44.1/graphviz-2.44.1.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -24,12 +24,14 @@ BuildRequires : expat-dev
 BuildRequires : flex
 BuildRequires : freeglut-dev
 BuildRequires : ghostscript
+BuildRequires : ghostscript-dev
 BuildRequires : groff
 BuildRequires : gtk+-dev
 BuildRequires : libXt-dev
 BuildRequires : libgd-dev
 BuildRequires : librsvg-dev
 BuildRequires : libwebp-dev
+BuildRequires : llvm
 BuildRequires : pkgconfig(gtk+-2.0)
 BuildRequires : pkgconfig(xpm)
 BuildRequires : pkgconfig(xrender)
@@ -126,7 +128,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1593731604
+export SOURCE_DATE_EPOCH=1609896156
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -139,16 +141,20 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1593731604
+export SOURCE_DATE_EPOCH=1609896156
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
 cp %{_builddir}/graphviz-2.44.1/COPYING %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
 cp %{_builddir}/graphviz-2.44.1/LICENSE %{buildroot}/usr/share/package-licenses/graphviz/0435b8c8e59b4e3bcc367276e5e8db44debb1bf7
 cp %{_builddir}/graphviz-2.44.1/contrib/java-dot/license.txt %{buildroot}/usr/share/package-licenses/graphviz/ff8f5786c5bfd83621338353fd37ca8148d45874
 cp %{_builddir}/graphviz-2.44.1/debian/copyright %{buildroot}/usr/share/package-licenses/graphviz/0bece0f3e31e61c3b5afe821fec476190f0b3417
+cp %{_builddir}/graphviz-2.44.1/epl-v10.html %{buildroot}/usr/share/package-licenses/graphviz/35666c54f2406125707e63edab12f2914d85ca76
+cp %{_builddir}/graphviz-2.44.1/epl-v10.txt %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
 cp %{_builddir}/graphviz-2.44.1/lib/rbtree/LICENSE %{buildroot}/usr/share/package-licenses/graphviz/e5398178f20a2036de0eca59ed5d9668121fa15e
 cp %{_builddir}/graphviz-2.44.1/macosx/build/English.lproj/License.rtf %{buildroot}/usr/share/package-licenses/graphviz/288dbb0f336ec60c12e9ce96b3405da9a7e15c6d
 cp %{_builddir}/graphviz-2.44.1/plugin.demo/xgtk/COPYING %{buildroot}/usr/share/package-licenses/graphviz/f8c92c8978081caefdbfae2311a0947ca82a1315
+cp %{_builddir}/graphviz-2.44.1/plugin.demo/xgtk/epl-v10.html %{buildroot}/usr/share/package-licenses/graphviz/35666c54f2406125707e63edab12f2914d85ca76
+cp %{_builddir}/graphviz-2.44.1/plugin.demo/xgtk/epl-v10.txt %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
 %make_install
 ## install_append content
 install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
@@ -697,6 +703,9 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/lib64/graphviz/libgvplugin_dot_layout.so
 /usr/lib64/graphviz/libgvplugin_dot_layout.so.6
 /usr/lib64/graphviz/libgvplugin_dot_layout.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_gs.so
+/usr/lib64/graphviz/libgvplugin_gs.so.6
+/usr/lib64/graphviz/libgvplugin_gs.so.6.0.0
 /usr/lib64/graphviz/libgvplugin_neato_layout.so
 /usr/lib64/graphviz/libgvplugin_neato_layout.so.6
 /usr/lib64/graphviz/libgvplugin_neato_layout.so.6.0.0
@@ -727,6 +736,7 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/share/package-licenses/graphviz/0bece0f3e31e61c3b5afe821fec476190f0b3417
 /usr/share/package-licenses/graphviz/288dbb0f336ec60c12e9ce96b3405da9a7e15c6d
 /usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
+/usr/share/package-licenses/graphviz/35666c54f2406125707e63edab12f2914d85ca76
 /usr/share/package-licenses/graphviz/e5398178f20a2036de0eca59ed5d9668121fa15e
 /usr/share/package-licenses/graphviz/f8c92c8978081caefdbfae2311a0947ca82a1315
 /usr/share/package-licenses/graphviz/ff8f5786c5bfd83621338353fd37ca8148d45874

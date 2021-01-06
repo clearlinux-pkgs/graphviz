@@ -5,6 +5,7 @@ expat-dev
 flex
 freeglut-dev
 ghostscript
+ghostscript-dev
 groff
 gtk+-dev
 libXt-dev
