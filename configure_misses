@@ -58,6 +58,7 @@ Configure miss: mach-o/dyld.h
 Configure miss: swig
 Configure miss: expat-config
 Configure miss: IL/il.h
+Configure miss: main in -lIL
 Configure miss: main in -lXpm
 Configure miss: X11/Xaw/Text.h
 Configure miss: deflateBound

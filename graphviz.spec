@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.44.1
-Release  : 41
+Release  : 42
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/2.44.1/graphviz-2.44.1.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/2.44.1/graphviz-2.44.1.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -128,7 +128,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1609896156
+export SOURCE_DATE_EPOCH=1609898084
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -141,7 +141,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1609896156
+export SOURCE_DATE_EPOCH=1609898084
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
 cp %{_builddir}/graphviz-2.44.1/COPYING %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
@@ -658,6 +658,9 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/lib64/graphviz/libgvplugin_gdk.so
 /usr/lib64/graphviz/libgvplugin_gdk.so.6
 /usr/lib64/graphviz/libgvplugin_gdk.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_gs.so
+/usr/lib64/graphviz/libgvplugin_gs.so.6
+/usr/lib64/graphviz/libgvplugin_gs.so.6.0.0
 /usr/lib64/graphviz/libgvplugin_gtk.so
 /usr/lib64/graphviz/libgvplugin_gtk.so.6
 /usr/lib64/graphviz/libgvplugin_gtk.so.6.0.0
@@ -703,9 +706,6 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/lib64/graphviz/libgvplugin_dot_layout.so
 /usr/lib64/graphviz/libgvplugin_dot_layout.so.6
 /usr/lib64/graphviz/libgvplugin_dot_layout.so.6.0.0
-/usr/lib64/graphviz/libgvplugin_gs.so
-/usr/lib64/graphviz/libgvplugin_gs.so.6
-/usr/lib64/graphviz/libgvplugin_gs.so.6.0.0
 /usr/lib64/graphviz/libgvplugin_neato_layout.so
 /usr/lib64/graphviz/libgvplugin_neato_layout.so.6
 /usr/lib64/graphviz/libgvplugin_neato_layout.so.6.0.0
