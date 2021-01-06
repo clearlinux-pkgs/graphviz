@@ -1,3 +1,9 @@
+/usr/bin/diffimg
+/usr/bin/dot_builtins
+/usr/bin/gvedit
+/usr/lib64/graphviz/libgvplugin_gd.so
+/usr/lib64/graphviz/libgvplugin_gd.so.6
+/usr/lib64/graphviz/libgvplugin_gd.so.6.0.0
 /usr/lib64/graphviz/libgvplugin_gdk.so
 /usr/lib64/graphviz/libgvplugin_gdk.so.6
 /usr/lib64/graphviz/libgvplugin_gdk.so.6.0.0
@@ -7,9 +13,13 @@
 /usr/lib64/graphviz/libgvplugin_pango.so
 /usr/lib64/graphviz/libgvplugin_pango.so.6
 /usr/lib64/graphviz/libgvplugin_pango.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_rsvg.so
+/usr/lib64/graphviz/libgvplugin_rsvg.so.6
+/usr/lib64/graphviz/libgvplugin_rsvg.so.6.0.0
 /usr/lib64/graphviz/libgvplugin_xlib.so
 /usr/lib64/graphviz/libgvplugin_xlib.so.6
 /usr/lib64/graphviz/libgvplugin_xlib.so.6.0.0
+/usr/lib64/graphviz/tcl/libgdtclft.so
 /usr/lib64/graphviz/tcl/libgdtclft.so.0
 /usr/lib64/graphviz/tcl/libgdtclft.so.0.0.0
 /usr/lib64/graphviz/tcl/libtcldot.so
@@ -33,13 +43,3 @@
 /usr/lib64/tcl8.6/graphviz/libtclplan.so
 /usr/lib64/tcl8.6/graphviz/libtclplan.so.0
 /usr/lib64/tcl8.6/graphviz/libtclplan.so.0.0.0
-/usr/bin/dot_builtins
-/usr/lib64/graphviz/libgvplugin_rsvg.so
-/usr/lib64/graphviz/libgvplugin_rsvg.so.6
-/usr/lib64/graphviz/libgvplugin_rsvg.so.6.0.0
-/usr/lib64/graphviz/libgvplugin_gd.so
-/usr/lib64/graphviz/libgvplugin_gd.so.6
-/usr/lib64/graphviz/libgvplugin_gd.so.6.0.0
-/usr/bin/diffimg
-/usr/lib64/graphviz/tcl/libgdtclft.so
-/usr/bin/gvedit
