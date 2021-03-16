@@ -3,10 +3,12 @@ FreeCAD
 Theano
 asciidoc
 avahi
+cairomm
 check
 conda
 corosync
 cppunit
+dav1d
 gcc
 gcc7
 gcc8
