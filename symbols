@@ -641,7 +641,6 @@ libgvpr.so.2:exrewind
 libgvpr.so.2:exstash
 libgvpr.so.2:exstatement
 libgvpr.so.2:exstralloc
-libgvpr.so.2:exstrfree
 libgvpr.so.2:exstring
 libgvpr.so.2:extoken_fn
 libgvpr.so.2:extype
