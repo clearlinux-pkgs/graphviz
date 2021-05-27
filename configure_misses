@@ -26,8 +26,6 @@ Configure miss: libglade-2.0
 Configure miss: library containing yywrap
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
-Configure miss: main in -lIL
-Configure miss: main in -lXpm
 Configure miss: main in -lcriterion
 Configure miss: off64_t
 Configure miss: poppler-glib

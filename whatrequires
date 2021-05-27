@@ -5,6 +5,7 @@ asciidoc
 avahi
 cairomm
 check
+compat-gcc-10
 conda
 corosync
 cppunit

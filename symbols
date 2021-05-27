@@ -186,6 +186,8 @@ libcgraph.so.6:agxbput
 libcgraph.so.6:agxbput_n
 libcgraph.so.6:agxget
 libcgraph.so.6:agxset
+libcgraph.so.6:gv_sprint
+libcgraph.so.6:gv_sprint_or_exit
 libgvc.so.6:AddBranch
 libgvc.so.6:Bezier
 libgvc.so.6:CombineRect
@@ -254,7 +256,6 @@ libgvc.so.6:clearHTMLlexer
 libgvc.so.6:clearPM
 libgvc.so.6:clip_and_install
 libgvc.so.6:colorCvt
-libgvc.so.6:colorType
 libgvc.so.6:colorxlate
 libgvc.so.6:common_init_edge
 libgvc.so.6:common_init_node
@@ -273,7 +274,6 @@ libgvc.so.6:dotneato_closest
 libgvc.so.6:dotneato_postprocess
 libgvc.so.6:dotneato_usage
 libgvc.so.6:edgeMidpoint
-libgvc.so.6:edgeType
 libgvc.so.6:edge_exists
 libgvc.so.6:einf
 libgvc.so.6:elapsed_sec
@@ -627,7 +627,6 @@ libgvpr.so.2:exexpr
 libgvpr.so.2:exfreenode
 libgvpr.so.2:exinit
 libgvpr.so.2:exisAssign
-libgvpr.so.2:exlexname
 libgvpr.so.2:exnewnode
 libgvpr.so.2:exnoncast
 libgvpr.so.2:exnospace
@@ -681,7 +680,6 @@ libgvpr.so.2:openNode
 libgvpr.so.2:openSubg
 libgvpr.so.2:parseProg
 libgvpr.so.2:pathaccess
-libgvpr.so.2:pathbin
 libgvpr.so.2:pathcanon
 libgvpr.so.2:pathcat
 libgvpr.so.2:pathexists
@@ -746,7 +744,6 @@ libgvpr.so.2:vmopen
 libgvpr.so.2:vmstrdup
 libgvpr.so.2:walksGraph
 libgvpr.so.2:writeFile
-libpathplan.so.4:Pobsbarriers
 libpathplan.so.4:Pobsclose
 libpathplan.so.4:Pobsopen
 libpathplan.so.4:Pobspath
@@ -770,7 +767,6 @@ libpathplan.so.4:solve2
 libpathplan.so.4:solve3
 libpathplan.so.4:visibility
 libpathplan.so.4:wind
-libxdot.so.4:colorType
 libxdot.so.4:fprintXDot
 libxdot.so.4:freeXDot
 libxdot.so.4:freeXDotColor
