@@ -275,7 +275,6 @@ libgvc.so.6:dotneato_postprocess
 libgvc.so.6:dotneato_usage
 libgvc.so.6:edgeMidpoint
 libgvc.so.6:edge_exists
-libgvc.so.6:einf
 libgvc.so.6:elapsed_sec
 libgvc.so.6:ellipticWedge
 libgvc.so.6:emit_clusters
@@ -291,7 +290,6 @@ libgvc.so.6:epsf_define
 libgvc.so.6:epsf_emit_body
 libgvc.so.6:epsf_free
 libgvc.so.6:epsf_init
-libgvc.so.6:findAttrColor
 libgvc.so.6:findCluster
 libgvc.so.6:findStopColor
 libgvc.so.6:find_user_shape
@@ -321,7 +319,6 @@ libgvc.so.6:get_gradient_points
 libgvc.so.6:get_inputscale
 libgvc.so.6:getdouble
 libgvc.so.6:getsplinepoints
-libgvc.so.6:ginf
 libgvc.so.6:gmalloc
 libgvc.so.6:graph_cleanup
 libgvc.so.6:graph_init
@@ -484,14 +481,11 @@ libgvc.so.6:mapbool
 libgvc.so.6:maptoken
 libgvc.so.6:mkClustMap
 libgvc.so.6:mkMaze
-libgvc.so.6:mkbox
-libgvc.so.6:mkboxf
 libgvc.so.6:neato_closest
 libgvc.so.6:newPM
 libgvc.so.6:newPS
 libgvc.so.6:new_queue
 libgvc.so.6:new_spline
-libgvc.so.6:ninf
 libgvc.so.6:nodeInduce
 libgvc.so.6:openIntSet
 libgvc.so.6:orthoEdges
@@ -555,7 +549,6 @@ libgvc.so.6:statXDot
 libgvc.so.6:strdup_and_subst_obj
 libgvc.so.6:stripedBox
 libgvc.so.6:taper
-libgvc.so.6:taper0
 libgvc.so.6:test_toggle
 libgvc.so.6:textfont_dict_close
 libgvc.so.6:textfont_dict_open
@@ -596,7 +589,6 @@ libgvpr.so.2:addNode
 libgvpr.so.2:bestalloc
 libgvpr.so.2:bestfree
 libgvpr.so.2:bestresize
-libgvpr.so.2:binary
 libgvpr.so.2:canon
 libgvpr.so.2:chresc
 libgvpr.so.2:chrtoi
@@ -614,7 +606,6 @@ libgvpr.so.2:copyAttr
 libgvpr.so.2:deleteObj
 libgvpr.so.2:errorf
 libgvpr.so.2:excast
-libgvpr.so.2:excc
 libgvpr.so.2:exccclose
 libgvpr.so.2:exccopen
 libgvpr.so.2:exclose
@@ -636,9 +627,7 @@ libgvpr.so.2:exopname
 libgvpr.so.2:exparse
 libgvpr.so.2:expop
 libgvpr.so.2:expush
-libgvpr.so.2:exrewind
 libgvpr.so.2:exstash
-libgvpr.so.2:exstatement
 libgvpr.so.2:exstralloc
 libgvpr.so.2:exstring
 libgvpr.so.2:extoken_fn
@@ -752,13 +741,10 @@ libpathplan.so.4:Proutespline
 libpathplan.so.4:Pshortestpath
 libpathplan.so.4:Ptriangulate
 libpathplan.so.4:area2
-libpathplan.so.4:copypoly
 libpathplan.so.4:directVis
 libpathplan.so.4:dist2
 libpathplan.so.4:freePath
-libpathplan.so.4:freepoly
 libpathplan.so.4:in_poly
-libpathplan.so.4:intersect
 libpathplan.so.4:makePath
 libpathplan.so.4:make_polyline
 libpathplan.so.4:ptVis
