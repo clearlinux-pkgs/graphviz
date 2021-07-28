@@ -369,7 +369,6 @@ libgvc.so.6:gvdevice_format
 libgvc.so.6:gvdevice_initialize
 libgvc.so.6:gvferror
 libgvc.so.6:gvflush
-libgvc.so.6:gvfwrite
 libgvc.so.6:gvjobs_delete
 libgvc.so.6:gvjobs_first
 libgvc.so.6:gvjobs_next

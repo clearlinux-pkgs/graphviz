@@ -45,3 +45,4 @@ wayland
 xcb-util-xrm
 xf86-input-wacom
 xorg-server
+xwayland
