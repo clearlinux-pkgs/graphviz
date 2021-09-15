@@ -1,6 +1,5 @@
 Configure miss: GL/glut.h
 Configure miss: IL/il.h
-Configure miss: X11/Xaw/Text.h
 Configure miss: _ prefix in compiled symbols
 Configure miss: _ prefix in compiled symbols
 Configure miss: ann
@@ -24,8 +23,6 @@ Configure miss: libglade-2.0
 Configure miss: library containing yywrap
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
-Configure miss: main in -lIL
-Configure miss: main in -lXpm
 Configure miss: main in -lcriterion
 Configure miss: off64_t
 Configure miss: poppler-glib
@@ -40,3 +37,4 @@ Configure miss: whether a statically linked program can dlopen itself
 Configure miss: whether the compiler supports GNU Objective C
 Configure miss: windres
 Configure miss: x86_64-generic-linux-gnu-clang
+Configure miss: xmu
