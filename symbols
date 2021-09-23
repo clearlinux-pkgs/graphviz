@@ -601,6 +601,8 @@ libgvpr.so.2:copy
 libgvpr.so.2:copyAttr
 libgvpr.so.2:deleteObj
 libgvpr.so.2:errorf
+libgvpr.so.2:ex_error
+libgvpr.so.2:ex_parse
 libgvpr.so.2:excast
 libgvpr.so.2:exccclose
 libgvpr.so.2:exccopen
@@ -620,7 +622,6 @@ libgvpr.so.2:exnospace
 libgvpr.so.2:exop
 libgvpr.so.2:exopen
 libgvpr.so.2:exopname
-libgvpr.so.2:exparse
 libgvpr.so.2:expop
 libgvpr.so.2:expush
 libgvpr.so.2:exstash
@@ -671,7 +672,6 @@ libgvpr.so.2:pathfind
 libgvpr.so.2:pathgetlink
 libgvpr.so.2:pathpath
 libgvpr.so.2:pop
-libgvpr.so.2:ptchk
 libgvpr.so.2:push
 libgvpr.so.2:readFile
 libgvpr.so.2:readG

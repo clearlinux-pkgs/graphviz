@@ -23,6 +23,7 @@ Configure miss: libglade-2.0
 Configure miss: library containing yywrap
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
+Configure miss: main in -lIL
 Configure miss: main in -lcriterion
 Configure miss: off64_t
 Configure miss: poppler-glib
@@ -37,4 +38,4 @@ Configure miss: whether a statically linked program can dlopen itself
 Configure miss: whether the compiler supports GNU Objective C
 Configure miss: windres
 Configure miss: x86_64-generic-linux-gnu-clang
-Configure miss: xmu
+Configure miss: xaw7
