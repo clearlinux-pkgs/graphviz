@@ -225,7 +225,6 @@ libgvc.so.6:RTreeSearch
 libgvc.so.6:RectArea
 libgvc.so.6:SplitNode
 libgvc.so.6:UF_find
-libgvc.so.6:UF_remove
 libgvc.so.6:UF_setname
 libgvc.so.6:UF_singleton
 libgvc.so.6:UF_union
@@ -391,6 +390,7 @@ libgvc.so.6:gvprintpointf
 libgvc.so.6:gvprintpointflist
 libgvc.so.6:gvputc
 libgvc.so.6:gvputs
+libgvc.so.6:gvputs_xml
 libgvc.so.6:gvrender_begin_anchor
 libgvc.so.6:gvrender_begin_cluster
 libgvc.so.6:gvrender_begin_edge
@@ -563,9 +563,7 @@ libgvc.so.6:utf8ToLatin1
 libgvc.so.6:wedgedEllipse
 libgvc.so.6:write_plain
 libgvc.so.6:xdotBB
-libgvc.so.6:xml_string
-libgvc.so.6:xml_string0
-libgvc.so.6:xml_url_string
+libgvc.so.6:xml_escape
 libgvc.so.6:yDir
 libgvc.so.6:zmalloc
 libgvc.so.6:zrealloc

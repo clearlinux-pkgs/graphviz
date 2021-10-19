@@ -18,6 +18,7 @@ geeqie
 gegl
 gpgme
 imagescan
+libaccounts-qt
 libgeotiff
 libinput
 libnl
@@ -39,6 +40,7 @@ pydot
 pydot_ng
 pyside2-setup
 ruby
+signond
 tigervnc
 v4l-utils
 wayland

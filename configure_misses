@@ -32,6 +32,8 @@ Configure miss: gtkglext-1.0
 Configure miss: gtkglext-1.0
 Configure miss: gts
 Configure miss: gts
+Configure miss: if FILE struct contains _cnt
+Configure miss: if FILE struct contains _cnt
 Configure miss: if FILE struct contains _next
 Configure miss: if FILE struct contains _next
 Configure miss: if FILE struct contains _r
@@ -46,6 +48,8 @@ Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
+Configure miss: main in -lIL
+Configure miss: main in -lIL
 Configure miss: main in -lcriterion
 Configure miss: main in -lcriterion
 Configure miss: off64_t
@@ -74,5 +78,3 @@ Configure miss: windres
 Configure miss: windres
 Configure miss: x86_64-generic-linux-gnu-clang
 Configure miss: x86_64-generic-linux-gnu-clang
-Configure miss: xaw7
-Configure miss: xaw7
