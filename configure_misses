@@ -48,8 +48,6 @@ Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
-Configure miss: main in -lIL
-Configure miss: main in -lIL
 Configure miss: main in -lcriterion
 Configure miss: main in -lcriterion
 Configure miss: off64_t
