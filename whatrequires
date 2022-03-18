@@ -1,12 +1,9 @@
 # This file contains recursive sources that require this package
-FreeCAD
-Theano
 asciidoc
 avahi
 cairomm
 check
 compat-gcc-10
-conda
 corosync
 cppunit
 dav1d
@@ -20,6 +17,7 @@ gpgme
 imagescan
 libaccounts-qt
 libgeotiff
+libgphoto2
 libinput
 libnl
 liboauth
@@ -36,9 +34,8 @@ openjdk13
 opus
 opusfile
 pspp
-pydot
-pydot_ng
 pyside2-setup
+qsstv
 ruby
 signond
 tigervnc

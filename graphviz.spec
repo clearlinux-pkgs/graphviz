@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.49.3
-Release  : 56
+Release  : 57
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/2.49.3/graphviz-2.49.3.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/2.49.3/graphviz-2.49.3.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -19,7 +19,6 @@ Requires: graphviz-license = %{version}-%{release}
 Requires: graphviz-man = %{version}-%{release}
 BuildRequires : bison
 BuildRequires : buildreq-cmake
-BuildRequires : buildreq-golang
 BuildRequires : buildreq-qmake
 BuildRequires : expat-dev
 BuildRequires : flex
@@ -47,6 +46,7 @@ BuildRequires : pkgconfig(pangocairo)
 BuildRequires : pkgconfig(pangoft2)
 BuildRequires : pkgconfig(xmu)
 BuildRequires : pkgconfig(xrender)
+BuildRequires : pypi(pylint)
 BuildRequires : tcl
 BuildRequires : tcl-dev
 BuildRequires : tcl-staticdev
@@ -153,7 +153,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1635203012
+export SOURCE_DATE_EPOCH=1647637635
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -175,7 +175,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1635203012
+export SOURCE_DATE_EPOCH=1647637635
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
 cp %{_builddir}/graphviz-2.49.3/COPYING %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
