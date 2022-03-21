@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.49.3
-Release  : 57
+Release  : 60
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/2.49.3/graphviz-2.49.3.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/2.49.3/graphviz-2.49.3.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -46,6 +46,7 @@ BuildRequires : pkgconfig(pangocairo)
 BuildRequires : pkgconfig(pangoft2)
 BuildRequires : pkgconfig(xmu)
 BuildRequires : pkgconfig(xrender)
+BuildRequires : poppler-dev
 BuildRequires : pypi(pylint)
 BuildRequires : tcl
 BuildRequires : tcl-dev
@@ -153,7 +154,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1647637635
+export SOURCE_DATE_EPOCH=1647884763
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -175,7 +176,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1647637635
+export SOURCE_DATE_EPOCH=1647884763
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
 cp %{_builddir}/graphviz-2.49.3/COPYING %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
@@ -488,9 +489,6 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/lib64/graphviz/libgvplugin_pango.so
 /usr/lib64/graphviz/libgvplugin_pango.so.6
 /usr/lib64/graphviz/libgvplugin_pango.so.6.0.0
-/usr/lib64/graphviz/libgvplugin_rsvg.so
-/usr/lib64/graphviz/libgvplugin_rsvg.so.6
-/usr/lib64/graphviz/libgvplugin_rsvg.so.6.0.0
 /usr/lib64/graphviz/libgvplugin_xlib.so
 /usr/lib64/graphviz/libgvplugin_xlib.so.6
 /usr/lib64/graphviz/libgvplugin_xlib.so.6.0.0
@@ -534,6 +532,12 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/lib64/graphviz/libgvplugin_neato_layout.so
 /usr/lib64/graphviz/libgvplugin_neato_layout.so.6
 /usr/lib64/graphviz/libgvplugin_neato_layout.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_poppler.so
+/usr/lib64/graphviz/libgvplugin_poppler.so.6
+/usr/lib64/graphviz/libgvplugin_poppler.so.6.0.0
+/usr/lib64/graphviz/libgvplugin_rsvg.so
+/usr/lib64/graphviz/libgvplugin_rsvg.so.6
+/usr/lib64/graphviz/libgvplugin_rsvg.so.6.0.0
 /usr/lib64/graphviz/libgvplugin_visio.so
 /usr/lib64/graphviz/libgvplugin_visio.so.6
 /usr/lib64/graphviz/libgvplugin_visio.so.6.0.0

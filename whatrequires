@@ -3,10 +3,10 @@ asciidoc
 avahi
 cairomm
 check
+compat-dav1d-soname5
 compat-gcc-10
 corosync
 cppunit
-dav1d
 gcc
 gcc7
 gcc8

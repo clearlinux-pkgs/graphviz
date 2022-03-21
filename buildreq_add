@@ -16,3 +16,5 @@ tcl-dev
 tcl-staticdev
 # for gvedit
 buildreq-qmake
+poppler-dev
+swig
