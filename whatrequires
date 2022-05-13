@@ -3,11 +3,11 @@ asciidoc
 avahi
 cairomm
 check
-compat-dav1d-soname5
 compat-gcc-10
 corosync
 cppunit
 gcc
+gcc11
 gcc7
 gcc8
 gcc9
@@ -19,6 +19,7 @@ libaccounts-qt
 libgeotiff
 libgphoto2
 libinput
+libmnl
 libnl
 liboauth
 libopenzwave

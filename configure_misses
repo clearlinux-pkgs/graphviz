@@ -48,12 +48,12 @@ Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
+Configure miss: main in -lIL
+Configure miss: main in -lIL
 Configure miss: main in -lcriterion
 Configure miss: main in -lcriterion
 Configure miss: off64_t
 Configure miss: off64_t
-Configure miss: poppler-glib
-Configure miss: poppler-glib
 Configure miss: qmake-qt5
 Configure miss: qmake-qt5
 Configure miss: stat.h
@@ -68,11 +68,13 @@ Configure miss: sys/dl.h
 Configure miss: sys/dl.h
 Configure miss: sys/dl.h
 Configure miss: sys/dl.h
-Configure miss: whether a statically linked program can dlopen itself
-Configure miss: whether a statically linked program can dlopen itself
 Configure miss: whether the compiler supports GNU Objective C
 Configure miss: whether the compiler supports GNU Objective C
 Configure miss: windres
 Configure miss: windres
 Configure miss: x86_64-generic-linux-gnu-clang
 Configure miss: x86_64-generic-linux-gnu-clang
+Configure miss: x86_64-generic-linux-gnu-file
+Configure miss: x86_64-generic-linux-gnu-file
+Configure miss: x86_64-generic-linux-gnu-file
+Configure miss: x86_64-generic-linux-gnu-file
