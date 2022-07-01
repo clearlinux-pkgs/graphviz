@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.49.3
-Release  : 63
+Release  : 64
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/2.49.3/graphviz-2.49.3.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/2.49.3/graphviz-2.49.3.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -153,7 +153,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656118595
+export SOURCE_DATE_EPOCH=1656702832
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -175,7 +175,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1656118595
+export SOURCE_DATE_EPOCH=1656702832
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
 cp %{_builddir}/graphviz-2.49.3/COPYING %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
@@ -443,6 +443,13 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/include/graphviz/types.h
 /usr/include/graphviz/usershape.h
 /usr/include/graphviz/xdot.h
+/usr/lib64/glibc-hwcaps/x86-64-v3/libcdt.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libcgraph.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgvc.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgvpr.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/liblab_gamut.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpathplan.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libxdot.so
 /usr/lib64/libcdt.so
 /usr/lib64/libcgraph.so
 /usr/lib64/libgvc.so
@@ -522,25 +529,18 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/glibc-hwcaps/x86-64-v3/libcdt.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libcdt.so.5
 /usr/lib64/glibc-hwcaps/x86-64-v3/libcdt.so.5.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libcgraph.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libcgraph.so.6
 /usr/lib64/glibc-hwcaps/x86-64-v3/libcgraph.so.6.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgvc.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libgvc.so.6
 /usr/lib64/glibc-hwcaps/x86-64-v3/libgvc.so.6.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgvpr.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libgvpr.so.2
 /usr/lib64/glibc-hwcaps/x86-64-v3/libgvpr.so.2.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/liblab_gamut.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/liblab_gamut.so.1
 /usr/lib64/glibc-hwcaps/x86-64-v3/liblab_gamut.so.1.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libpathplan.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libpathplan.so.4
 /usr/lib64/glibc-hwcaps/x86-64-v3/libpathplan.so.4.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libxdot.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libxdot.so.4
 /usr/lib64/glibc-hwcaps/x86-64-v3/libxdot.so.4.0.0
 /usr/lib64/graphviz/libgvplugin_core.so
@@ -578,6 +578,7 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /usr/lib64/libpathplan.so.4.0.0
 /usr/lib64/libxdot.so.4
 /usr/lib64/libxdot.so.4.0.0
+/usr/share/clear/optimized-elf/other*
 
 %files license
 %defattr(0644,root,root,0755)
