@@ -4,7 +4,7 @@
 #
 Name     : graphviz
 Version  : 2.49.3
-Release  : 64
+Release  : 66
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/2.49.3/graphviz-2.49.3.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/2.49.3/graphviz-2.49.3.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -51,6 +51,7 @@ BuildRequires : tcl
 BuildRequires : tcl-dev
 BuildRequires : tcl-staticdev
 Patch1: 0001-Move-config-path-to-var-lib-graphviz.patch
+Patch2: 0002-Don-t-try-and-figure-out-libdir-from-maps.patch
 
 %description
 Graphviz - Graph Drawing Programs from AT&T Research and Lucent Bell Labs
@@ -144,6 +145,7 @@ man components for the graphviz package.
 %setup -q -n graphviz-2.49.3
 cd %{_builddir}/graphviz-2.49.3
 %patch1 -p1
+%patch2 -p1
 pushd ..
 cp -a graphviz-2.49.3 buildavx2
 popd
@@ -153,7 +155,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656702832
+export SOURCE_DATE_EPOCH=1658981193
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -175,20 +177,20 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1656702832
+export SOURCE_DATE_EPOCH=1658981193
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
-cp %{_builddir}/graphviz-2.49.3/COPYING %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
-cp %{_builddir}/graphviz-2.49.3/LICENSE %{buildroot}/usr/share/package-licenses/graphviz/0435b8c8e59b4e3bcc367276e5e8db44debb1bf7
-cp %{_builddir}/graphviz-2.49.3/contrib/java-dot/license.txt %{buildroot}/usr/share/package-licenses/graphviz/ff8f5786c5bfd83621338353fd37ca8148d45874
-cp %{_builddir}/graphviz-2.49.3/debian/copyright %{buildroot}/usr/share/package-licenses/graphviz/0bece0f3e31e61c3b5afe821fec476190f0b3417
-cp %{_builddir}/graphviz-2.49.3/epl-v10.html %{buildroot}/usr/share/package-licenses/graphviz/35666c54f2406125707e63edab12f2914d85ca76
-cp %{_builddir}/graphviz-2.49.3/epl-v10.txt %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
-cp %{_builddir}/graphviz-2.49.3/lib/rbtree/LICENSE %{buildroot}/usr/share/package-licenses/graphviz/e5398178f20a2036de0eca59ed5d9668121fa15e
-cp %{_builddir}/graphviz-2.49.3/macosx/build/English.lproj/License.rtf %{buildroot}/usr/share/package-licenses/graphviz/288dbb0f336ec60c12e9ce96b3405da9a7e15c6d
-cp %{_builddir}/graphviz-2.49.3/plugin.demo/xgtk/COPYING %{buildroot}/usr/share/package-licenses/graphviz/f8c92c8978081caefdbfae2311a0947ca82a1315
-cp %{_builddir}/graphviz-2.49.3/plugin.demo/xgtk/epl-v10.html %{buildroot}/usr/share/package-licenses/graphviz/35666c54f2406125707e63edab12f2914d85ca76
-cp %{_builddir}/graphviz-2.49.3/plugin.demo/xgtk/epl-v10.txt %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
+cp %{_builddir}/graphviz-%{version}/COPYING %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
+cp %{_builddir}/graphviz-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/graphviz/0435b8c8e59b4e3bcc367276e5e8db44debb1bf7
+cp %{_builddir}/graphviz-%{version}/contrib/java-dot/license.txt %{buildroot}/usr/share/package-licenses/graphviz/ff8f5786c5bfd83621338353fd37ca8148d45874
+cp %{_builddir}/graphviz-%{version}/debian/copyright %{buildroot}/usr/share/package-licenses/graphviz/0bece0f3e31e61c3b5afe821fec476190f0b3417
+cp %{_builddir}/graphviz-%{version}/epl-v10.html %{buildroot}/usr/share/package-licenses/graphviz/35666c54f2406125707e63edab12f2914d85ca76
+cp %{_builddir}/graphviz-%{version}/epl-v10.txt %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
+cp %{_builddir}/graphviz-%{version}/lib/rbtree/LICENSE %{buildroot}/usr/share/package-licenses/graphviz/e5398178f20a2036de0eca59ed5d9668121fa15e
+cp %{_builddir}/graphviz-%{version}/macosx/build/English.lproj/License.rtf %{buildroot}/usr/share/package-licenses/graphviz/288dbb0f336ec60c12e9ce96b3405da9a7e15c6d
+cp %{_builddir}/graphviz-%{version}/plugin.demo/xgtk/COPYING %{buildroot}/usr/share/package-licenses/graphviz/f8c92c8978081caefdbfae2311a0947ca82a1315
+cp %{_builddir}/graphviz-%{version}/plugin.demo/xgtk/epl-v10.html %{buildroot}/usr/share/package-licenses/graphviz/35666c54f2406125707e63edab12f2914d85ca76
+cp %{_builddir}/graphviz-%{version}/plugin.demo/xgtk/epl-v10.txt %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d
 pushd ../buildavx2/
 %make_install_v3
 popd

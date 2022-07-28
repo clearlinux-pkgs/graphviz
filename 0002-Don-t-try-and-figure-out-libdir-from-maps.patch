@@ -1,0 +1,54 @@
+From e1e34e00155c4baa854761b720066fd6d963d97c Mon Sep 17 00:00:00 2001
+From: William Douglas <william.douglas@intel.com>
+Date: Wed, 27 Jul 2022 20:11:46 -0700
+Subject: [PATCH] Don't try and figure out libdir from maps
+
+If we are using an optimized lib of graphviz the libdir is incorrect
+due to the way libdir attempts to look up the plugin path based off of
+the main graphviz library path. Just use the default lib path instead.
+
+Signed-off-by: William Douglas <william.douglas@intel.com>
+---
+ lib/gvc/gvconfig.c | 26 +-------------------------
+ 1 file changed, 1 insertion(+), 25 deletions(-)
+
+diff --git a/lib/gvc/gvconfig.c b/lib/gvc/gvconfig.c
+index 06c3326..b02331e 100644
+--- a/lib/gvc/gvconfig.c
++++ b/lib/gvc/gvconfig.c
+@@ -321,31 +321,7 @@ char * gvconfig_libdir(GVC_t * gvc)
+ 		}
+ 	    }
+ #else
+-	    FILE* f = fopen ("/proc/self/maps", "r");
+-	    char* path;
+-	    if (f) {
+-		while (!feof (f)) {
+-		    if (!fgets (line, sizeof (line), f))
+-			continue;
+-		    if (!strstr (line, " r-xp "))
+-			continue;
+-		    path = strchr (line, '/');
+-		    if (!path)
+-		        continue;
+-		    tmp = strstr (path, "/libgvc.");
+-		    if (tmp) {
+-			*tmp = 0;
+-			/* Check for real /lib dir. Don't accept pre-install /.libs */
+-			if (strcmp(strrchr(path,'/'), "/.libs") == 0)
+-			    continue;
+-			memmove(line, path, strlen(path) + 1);  /* use line buffer for result */
+-			strcat(line, "/graphviz");  /* plugins are in "graphviz" subdirectory */
+-			libdir = line;
+-			break;
+-		    }
+-		}
+-		fclose (f);
+-	    }
++
+ #endif
+ #endif
+ 	}
+-- 
+2.36.1
+
