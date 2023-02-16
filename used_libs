@@ -2,7 +2,6 @@ libQt5Core.so.5
 libQt5Gui.so.5
 libQt5Widgets.so.5
 libX11.so.6
-libatk-1.0.so.0
 libc.so.6
 libcairo.so.2
 libexpat.so.1
@@ -15,7 +14,7 @@ libgdk_pixbuf-2.0.so.0
 libgio-2.0.so.0
 libglib-2.0.so.0
 libgobject-2.0.so.0
-libgs.so.9
+libgs.so.10
 libgtk-x11-2.0.so.0
 libharfbuzz.so.0
 libltdl.so.7
@@ -26,6 +25,7 @@ libpangocairo-1.0.so.0
 libpangoft2-1.0.so.0
 libpoppler-glib.so.8
 librsvg-2.so.2
+libsharpyuv.so.0
 libstdc++.so.6
 libwebp.so.7
 libz.so.1
