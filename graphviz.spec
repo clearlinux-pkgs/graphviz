@@ -5,7 +5,7 @@
 #
 Name     : graphviz
 Version  : 7.0.5
-Release  : 79
+Release  : 80
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/7.0.5/graphviz-7.0.5.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/7.0.5/graphviz-7.0.5.tar.gz
 Summary  : Library for parsing graphs in xdot format
@@ -145,8 +145,8 @@ man components for the graphviz package.
 %prep
 %setup -q -n graphviz-7.0.5
 cd %{_builddir}/graphviz-7.0.5
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 pushd ..
 cp -a graphviz-7.0.5 buildavx2
 popd
@@ -156,7 +156,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682976414
+export SOURCE_DATE_EPOCH=1686943235
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -178,7 +178,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1682976414
+export SOURCE_DATE_EPOCH=1686943235
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
 cp %{_builddir}/graphviz-%{version}/COPYING %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d || :
@@ -211,35 +211,25 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /V3/usr/bin/acyclic
 /V3/usr/bin/bcomps
 /V3/usr/bin/ccomps
-/V3/usr/bin/circo
 /V3/usr/bin/cluster
 /V3/usr/bin/dijkstra
 /V3/usr/bin/dot
-/V3/usr/bin/dot2gxl
 /V3/usr/bin/edgepaint
-/V3/usr/bin/fdp
 /V3/usr/bin/gc
 /V3/usr/bin/gml2gv
 /V3/usr/bin/graphml2gv
 /V3/usr/bin/gv2gml
-/V3/usr/bin/gv2gxl
 /V3/usr/bin/gvcolor
 /V3/usr/bin/gvgen
 /V3/usr/bin/gvmap
 /V3/usr/bin/gvpack
 /V3/usr/bin/gvpr
-/V3/usr/bin/gxl2dot
 /V3/usr/bin/gxl2gv
 /V3/usr/bin/mm2gv
-/V3/usr/bin/neato
 /V3/usr/bin/nop
-/V3/usr/bin/osage
-/V3/usr/bin/patchwork
 /V3/usr/bin/prune
 /V3/usr/bin/sccmap
-/V3/usr/bin/sfdp
 /V3/usr/bin/tred
-/V3/usr/bin/twopi
 /V3/usr/bin/unflatten
 /usr/bin/acyclic
 /usr/bin/bcomps
@@ -406,13 +396,6 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libcdt.so
-/V3/usr/lib64/libcgraph.so
-/V3/usr/lib64/libgvc.so
-/V3/usr/lib64/libgvpr.so
-/V3/usr/lib64/liblab_gamut.so
-/V3/usr/lib64/libpathplan.so
-/V3/usr/lib64/libxdot.so
 /usr/include/graphviz/arith.h
 /usr/include/graphviz/cdt.h
 /usr/include/graphviz/cgraph.h
@@ -474,23 +457,11 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 /V3/usr/bin/diffimg
 /V3/usr/bin/dot_builtins
 /V3/usr/bin/gvedit
-/V3/usr/lib64/graphviz/libgvplugin_gd.so
-/V3/usr/lib64/graphviz/libgvplugin_gd.so.6
 /V3/usr/lib64/graphviz/libgvplugin_gd.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_gdk.so
-/V3/usr/lib64/graphviz/libgvplugin_gdk.so.6
 /V3/usr/lib64/graphviz/libgvplugin_gdk.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_gs.so
-/V3/usr/lib64/graphviz/libgvplugin_gs.so.6
 /V3/usr/lib64/graphviz/libgvplugin_gs.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_gtk.so
-/V3/usr/lib64/graphviz/libgvplugin_gtk.so.6
 /V3/usr/lib64/graphviz/libgvplugin_gtk.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_pango.so
-/V3/usr/lib64/graphviz/libgvplugin_pango.so.6
 /V3/usr/lib64/graphviz/libgvplugin_pango.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_xlib.so
-/V3/usr/lib64/graphviz/libgvplugin_xlib.so.6
 /V3/usr/lib64/graphviz/libgvplugin_xlib.so.6.0.0
 /V3/usr/lib64/graphviz/tcl/libgdtclft.so
 /V3/usr/lib64/graphviz/tcl/libtcldot.so
@@ -532,40 +503,19 @@ install -m 0755 -D graphviz.conf %{buildroot}/usr/lib/tmpfiles.d/graphviz.conf
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/graphviz/libgvplugin_core.so
-/V3/usr/lib64/graphviz/libgvplugin_core.so.6
 /V3/usr/lib64/graphviz/libgvplugin_core.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_dot_layout.so
-/V3/usr/lib64/graphviz/libgvplugin_dot_layout.so.6
 /V3/usr/lib64/graphviz/libgvplugin_dot_layout.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_neato_layout.so
-/V3/usr/lib64/graphviz/libgvplugin_neato_layout.so.6
 /V3/usr/lib64/graphviz/libgvplugin_neato_layout.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_poppler.so
-/V3/usr/lib64/graphviz/libgvplugin_poppler.so.6
 /V3/usr/lib64/graphviz/libgvplugin_poppler.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_rsvg.so
-/V3/usr/lib64/graphviz/libgvplugin_rsvg.so.6
 /V3/usr/lib64/graphviz/libgvplugin_rsvg.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_visio.so
-/V3/usr/lib64/graphviz/libgvplugin_visio.so.6
 /V3/usr/lib64/graphviz/libgvplugin_visio.so.6.0.0
-/V3/usr/lib64/graphviz/libgvplugin_webp.so
-/V3/usr/lib64/graphviz/libgvplugin_webp.so.6
 /V3/usr/lib64/graphviz/libgvplugin_webp.so.6.0.0
-/V3/usr/lib64/libcdt.so.5
 /V3/usr/lib64/libcdt.so.5.0.0
-/V3/usr/lib64/libcgraph.so.6
 /V3/usr/lib64/libcgraph.so.6.0.0
-/V3/usr/lib64/libgvc.so.6
 /V3/usr/lib64/libgvc.so.6.0.0
-/V3/usr/lib64/libgvpr.so.2
 /V3/usr/lib64/libgvpr.so.2.0.0
-/V3/usr/lib64/liblab_gamut.so.1
 /V3/usr/lib64/liblab_gamut.so.1.0.0
-/V3/usr/lib64/libpathplan.so.4
 /V3/usr/lib64/libpathplan.so.4.0.0
-/V3/usr/lib64/libxdot.so.4
 /V3/usr/lib64/libxdot.so.4.0.0
 /usr/lib64/graphviz/libgvplugin_core.so
 /usr/lib64/graphviz/libgvplugin_core.so.6
