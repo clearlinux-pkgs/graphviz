@@ -5,7 +5,7 @@
 #
 Name     : graphviz
 Version  : 7.0.5
-Release  : 78
+Release  : 79
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/7.0.5/graphviz-7.0.5.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/7.0.5/graphviz-7.0.5.tar.gz
 Summary  : Library for parsing graphs in xdot format
