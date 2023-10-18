@@ -24,16 +24,14 @@ libopenzwave
 libsmbios
 libvdpau
 libxdg-basedir
+libxkbcommon
 mingw-gcc
 mkl-dnn
 netcdf
 open-vm-tools
-openjdk11
-openjdk13
 opus
 opusfile
 pspp
-pyside2-setup
 qsstv
 ruby
 signond

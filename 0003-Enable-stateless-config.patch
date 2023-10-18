@@ -1,0 +1,95 @@
+From da08309a2608805d8669b5c8a8d8f7240bc824b1 Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Wed, 18 Oct 2023 10:24:23 -0700
+Subject: [PATCH] Enable stateless config
+
+dot will read from /usr/share/graphviz/config6 if
+/var/lib/graphviz/config6 does not exist.
+Environment GV_CONFIG_PATH may be set to override the path where the
+config file may be found/written.
+---
+ lib/gvc/gvconfig.c | 32 +++++++++++++++++++++++++++-----
+ 1 file changed, 27 insertions(+), 5 deletions(-)
+
+diff --git a/lib/gvc/gvconfig.c b/lib/gvc/gvconfig.c
+index c0dd79457c02..a73e7137dcca 100644
+--- a/lib/gvc/gvconfig.c
++++ b/lib/gvc/gvconfig.c
+@@ -24,6 +24,10 @@
+ #include	<string.h>
+ #include <unistd.h>
+ 
++/* stateless */
++#include <errno.h>
++#define STATELESS_CONFIG_DIR "/usr/share/graphviz"
++
+ #ifdef ENABLE_LTDL
+ #ifdef HAVE_DL_ITERATE_PHDR
+ #include <link.h>
+@@ -535,6 +539,8 @@ void gvconfig(GVC_t * gvc, bool rescan)
+     char *config_text = NULL;
+     char *libdir;
+     char *config_file_name = GVPLUGIN_CONFIG_FILE;
++    char *env_config_path = NULL;
++    char *read_config_path = NULL;
+ 
+ #endif
+     
+@@ -551,6 +557,17 @@ void gvconfig(GVC_t * gvc, bool rescan)
+     	    /* if we fail to stat it then it probably doesn't exist so just fail silently */
+ 	    return;
+         }
++
++	/* stateless: allow overriding config path with environment variable */
++	if (env_config_path = getenv("GV_CONFIG_PATH")) {
++	    if(gvc->config_path) {
++		free(gvc->config_path);
++	    }
++	    gvc->config_path = gmalloc(strlen(env_config_path) + 1 + strlen(config_file_name) + 1);
++	    strcpy(gvc->config_path, env_config_path);
++	    strcat(gvc->config_path, DIRSEP);
++	    strcat(gvc->config_path, config_file_name);
++	}
+     
+         if (! gvc->config_path) {
+             gvc->config_path = gmalloc(strlen("/var/lib/graphviz") + 1 + strlen(config_file_name) + 1);
+@@ -568,26 +585,31 @@ void gvconfig(GVC_t * gvc, bool rescan)
+     
+         /* load in the cached plugin library data */
+     
+-        rc = stat(gvc->config_path, &config_st);
++	read_config_path = gvc->config_path;
++	rc = stat(read_config_path, &config_st);
++        if (rc == -1 && ENOENT == errno) {
++	    read_config_path = STATELESS_CONFIG_DIR "/" GVPLUGIN_CONFIG_FILE;
++	    rc = stat(read_config_path, &config_st);
++	}
+         if (rc == -1) {
+ 	    gvtextlayout_select(gvc);   /* choose best available textlayout plugin immediately */
+     	    /* silently return without setting gvc->config_found = TRUE */
+     	    return;
+         }
+         else {
+-    	    f = fopen(gvc->config_path,"r");
++    	    f = fopen(read_config_path,"r");
+     	    if (!f) {
+-    	        agerr (AGERR,"failed to open %s for read.\n", gvc->config_path);
++    	        agerr (AGERR,"failed to open %s for read.\n", read_config_path);
+ 		return;
+     	    }
+     	    else if (config_st.st_size == 0) {
+-    	        agerr(AGERR, "%s is zero sized.\n", gvc->config_path);
++    	        agerr(AGERR, "%s is zero sized.\n", read_config_path);
+     	    }
+     	    else {
+     	        config_text = gmalloc((size_t)config_st.st_size + 1);
+     	        size_t sz = fread(config_text, 1, (size_t)config_st.st_size, f);
+     	        if (sz == 0) {
+-    	            agerr(AGERR, "%s read error.\n", gvc->config_path);
++    	            agerr(AGERR, "%s read error.\n", read_config_path);
+     	        }
+     	        else {
+     	            gvc->config_found = true;
+-- 
+2.42.0
+
