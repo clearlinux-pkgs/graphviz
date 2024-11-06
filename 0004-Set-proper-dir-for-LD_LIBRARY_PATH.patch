@@ -1,0 +1,41 @@
+From dd6ba91d089d1366acbed32645fbecd8d64f6170 Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Wed, 6 Nov 2024 09:20:32 -0800
+Subject: [PATCH] Set proper dir for LD_LIBRARY_PATH
+
+Original code here effectively sets LD_LIBRARY_PATH to
+%{buildroot}/usr//usr/lib64.
+
+$ENV{DESTDIR} = %{buildroot}
+${CMAKE_INSTALL_PREFIX} = /usr
+@LIBRARY_INSTALL_DIR@ = /usr/lib64
+
+Failure signature:
+/builddir/build/BUILDROOT/graphviz-12.1.2-86.x86_64/usr/bin/dot: error while loading shared libraries: libgvc.so.6: cannot open shared object file: No such file or directory
+CMake Error at cmd/dot/configure_plugins.cmake:38 (execute_process):
+  execute_process failed command indexes:
+    1: "Child return code: 127"
+Call Stack (most recent call first):
+  cmd/dot/cmake_install.cmake:126 (include)
+  cmd/cmake_install.cmake:47 (include)
+  cmake_install.cmake:76 (include)
+---
+ cmake/configure_plugins.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/configure_plugins.cmake.in b/cmake/configure_plugins.cmake.in
+index 3cfd52db9706..810d8c94e77d 100644
+--- a/cmake/configure_plugins.cmake.in
++++ b/cmake/configure_plugins.cmake.in
+@@ -32,7 +32,7 @@ set(ROOT $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX})
+ if(APPLE)
+   set(ENV{DYLD_LIBRARY_PATH} "${ROOT}/@LIBRARY_INSTALL_DIR@")
+ elseif(UNIX)
+-  set(ENV{LD_LIBRARY_PATH} "${ROOT}/@LIBRARY_INSTALL_DIR@")
++  set(ENV{LD_LIBRARY_PATH} "$ENV{DESTDIR}/@LIBRARY_INSTALL_DIR@")
+ endif()
+ 
+ # Store this initial copy of the config6 plugin in the stateless fallback location
+-- 
+2.47.0
+

@@ -21,13 +21,14 @@ libmnl
 libnl
 liboauth
 libopenzwave
+libopusenc
 libsmbios
 libvdpau
 libxdg-basedir
-libxkbcommon
 mingw-gcc
 mkl-dnn
 netcdf
+netcdf-fortran
 open-vm-tools
 opus
 opusfile
@@ -36,7 +37,6 @@ qsstv
 ruby
 signond
 tigervnc
-v4l-utils
 wayland
 xcb-util-xrm
 xf86-input-wacom

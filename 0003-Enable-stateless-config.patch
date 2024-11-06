@@ -1,4 +1,4 @@
-From da08309a2608805d8669b5c8a8d8f7240bc824b1 Mon Sep 17 00:00:00 2001
+From 0e7502466e33f6e0ebcd467dde46d6a07dedd8a3 Mon Sep 17 00:00:00 2001
 From: "Brett T. Warden" <brett.t.warden@intel.com>
 Date: Wed, 18 Oct 2023 10:24:23 -0700
 Subject: [PATCH] Enable stateless config
@@ -8,16 +8,31 @@ dot will read from /usr/share/graphviz/config6 if
 Environment GV_CONFIG_PATH may be set to override the path where the
 config file may be found/written.
 ---
- lib/gvc/gvconfig.c | 32 +++++++++++++++++++++++++++-----
- 1 file changed, 27 insertions(+), 5 deletions(-)
+ cmake/configure_plugins.cmake.in |  3 +++
+ lib/gvc/gvconfig.c               | 31 ++++++++++++++++++++++++++-----
+ 2 files changed, 29 insertions(+), 5 deletions(-)
 
+diff --git a/cmake/configure_plugins.cmake.in b/cmake/configure_plugins.cmake.in
+index d0c8f0f95f16..3cfd52db9706 100644
+--- a/cmake/configure_plugins.cmake.in
++++ b/cmake/configure_plugins.cmake.in
+@@ -35,6 +35,9 @@ elseif(UNIX)
+   set(ENV{LD_LIBRARY_PATH} "${ROOT}/@LIBRARY_INSTALL_DIR@")
+ endif()
+ 
++# Store this initial copy of the config6 plugin in the stateless fallback location
++set(ENV{GV_CONFIG_PATH} "$ENV{DESTDIR}/usr/share/graphviz")
++
+ execute_process(
+   COMMAND ${ROOT}/bin/dot -c
+   COMMAND_ERROR_IS_FATAL ANY
 diff --git a/lib/gvc/gvconfig.c b/lib/gvc/gvconfig.c
-index c0dd79457c02..a73e7137dcca 100644
+index 92f27f356d56..ef5273506320 100644
 --- a/lib/gvc/gvconfig.c
 +++ b/lib/gvc/gvconfig.c
-@@ -24,6 +24,10 @@
- #include	<string.h>
- #include <unistd.h>
+@@ -29,6 +29,10 @@
+ #include <util/exit.h>
+ #include <util/gv_fopen.h>
  
 +/* stateless */
 +#include <errno.h>
@@ -35,25 +50,24 @@ index c0dd79457c02..a73e7137dcca 100644
  
  #endif
      
-@@ -551,6 +557,17 @@ void gvconfig(GVC_t * gvc, bool rescan)
+@@ -550,6 +556,16 @@ void gvconfig(GVC_t * gvc, bool rescan)
      	    /* if we fail to stat it then it probably doesn't exist so just fail silently */
- 	    return;
+ 	    goto done;
          }
 +
 +	/* stateless: allow overriding config path with environment variable */
 +	if (env_config_path = getenv("GV_CONFIG_PATH")) {
++	    agxbuf xb = {0};
++	    agxbprint(&xb, "%s%s%s", env_config_path, DIRSEP, config_file_name);
 +	    if(gvc->config_path) {
 +		free(gvc->config_path);
 +	    }
-+	    gvc->config_path = gmalloc(strlen(env_config_path) + 1 + strlen(config_file_name) + 1);
-+	    strcpy(gvc->config_path, env_config_path);
-+	    strcat(gvc->config_path, DIRSEP);
-+	    strcat(gvc->config_path, config_file_name);
++	    gvc->config_path = agxbdisown(&xb);
 +	}
      
          if (! gvc->config_path) {
-             gvc->config_path = gmalloc(strlen("/var/lib/graphviz") + 1 + strlen(config_file_name) + 1);
-@@ -568,26 +585,31 @@ void gvconfig(GVC_t * gvc, bool rescan)
+             agxbuf xb = {0};
+@@ -568,25 +584,30 @@ void gvconfig(GVC_t * gvc, bool rescan)
      
          /* load in the cached plugin library data */
      
@@ -65,31 +79,30 @@ index c0dd79457c02..a73e7137dcca 100644
 +	    rc = stat(read_config_path, &config_st);
 +	}
          if (rc == -1) {
- 	    gvtextlayout_select(gvc);   /* choose best available textlayout plugin immediately */
      	    /* silently return without setting gvc->config_found = TRUE */
-     	    return;
+     	    goto done;
          }
          else {
--    	    f = fopen(gvc->config_path,"r");
-+    	    f = fopen(read_config_path,"r");
+-    	    f = gv_fopen(gvc->config_path, "r");
++    	    f = gv_fopen(read_config_path, "r");
      	    if (!f) {
--    	        agerr (AGERR,"failed to open %s for read.\n", gvc->config_path);
-+    	        agerr (AGERR,"failed to open %s for read.\n", read_config_path);
+-    	        agerrorf("failed to open %s for read.\n", gvc->config_path);
++    	        agerrorf("failed to open %s for read.\n", read_config_path);
  		return;
      	    }
      	    else if (config_st.st_size == 0) {
--    	        agerr(AGERR, "%s is zero sized.\n", gvc->config_path);
-+    	        agerr(AGERR, "%s is zero sized.\n", read_config_path);
+-    	        agerrorf("%s is zero sized.\n", gvc->config_path);
++    	        agerrorf("%s is zero sized.\n", read_config_path);
      	    }
      	    else {
-     	        config_text = gmalloc((size_t)config_st.st_size + 1);
+     	        config_text = gv_alloc((size_t)config_st.st_size + 1);
      	        size_t sz = fread(config_text, 1, (size_t)config_st.st_size, f);
      	        if (sz == 0) {
--    	            agerr(AGERR, "%s read error.\n", gvc->config_path);
-+    	            agerr(AGERR, "%s read error.\n", read_config_path);
+-    	            agerrorf("%s read error.\n", gvc->config_path);
++    	            agerrorf("%s read error.\n", read_config_path);
      	        }
      	        else {
      	            gvc->config_found = true;
 -- 
-2.42.0
+2.47.0
 

@@ -1,4 +1,4 @@
-From a5d6fe7dcc0762ffe8b1bdf606a7bf8e27ff2dcd Mon Sep 17 00:00:00 2001
+From d9bbe2728261069995da8e4eb8f2454ce6e50895 Mon Sep 17 00:00:00 2001
 From: William Douglas <william.douglas@intel.com>
 Date: Wed, 27 Jul 2022 20:11:46 -0700
 Subject: [PATCH] Don't try and figure out libdir from maps
@@ -13,14 +13,14 @@ Signed-off-by: William Douglas <william.douglas@intel.com>
  1 file changed, 1 insertion(+), 24 deletions(-)
 
 diff --git a/lib/gvc/gvconfig.c b/lib/gvc/gvconfig.c
-index e593909672b2..c0dd79457c02 100644
+index 087a4c39fc3e..92f27f356d56 100644
 --- a/lib/gvc/gvconfig.c
 +++ b/lib/gvc/gvconfig.c
-@@ -348,30 +348,7 @@ char * gvconfig_libdir(GVC_t * gvc)
+@@ -353,30 +353,7 @@ char * gvconfig_libdir(GVC_t * gvc)
  	    dl_iterate_phdr(line_callback, line);
  	    libdir = line;
  #else
--	    FILE* f = fopen ("/proc/self/maps", "r");
+-	    FILE* f = gv_fopen("/proc/self/maps", "r");
 -	    if (f) {
 -		while (!feof (f)) {
 -		    if (!fgets (line, sizeof (line), f))
@@ -49,5 +49,5 @@ index e593909672b2..c0dd79457c02 100644
  #endif
  	}
 -- 
-2.39.1
+2.47.0
 
