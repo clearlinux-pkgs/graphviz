@@ -1,4 +1,4 @@
-From dd6ba91d089d1366acbed32645fbecd8d64f6170 Mon Sep 17 00:00:00 2001
+From d4198284d32a944dafc913bac72ad5214db4650b Mon Sep 17 00:00:00 2001
 From: "Brett T. Warden" <brett.t.warden@intel.com>
 Date: Wed, 6 Nov 2024 09:20:32 -0800
 Subject: [PATCH] Set proper dir for LD_LIBRARY_PATH
@@ -19,9 +19,14 @@ Call Stack (most recent call first):
   cmd/dot/cmake_install.cmake:126 (include)
   cmd/cmake_install.cmake:47 (include)
   cmake_install.cmake:76 (include)
+
+Also make similar corrections for LIBRARY_INSTALL_DIR and
+PLUGIN_INSTALL_DIR in RPATH corrections since our version of those
+starts with "/usr".
 ---
  cmake/configure_plugins.cmake.in | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ cmd/CMakeLists.txt               | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/cmake/configure_plugins.cmake.in b/cmake/configure_plugins.cmake.in
 index 3cfd52db9706..810d8c94e77d 100644
@@ -36,6 +41,21 @@ index 3cfd52db9706..810d8c94e77d 100644
  endif()
  
  # Store this initial copy of the config6 plugin in the stateless fallback location
+diff --git a/cmd/CMakeLists.txt b/cmd/CMakeLists.txt
+index f8a943673661..b0291e98f2e4 100644
+--- a/cmd/CMakeLists.txt
++++ b/cmd/CMakeLists.txt
+@@ -4,8 +4,8 @@ if(APPLE)
+   list(APPEND CMAKE_INSTALL_RPATH "@executable_path/../${PLUGIN_INSTALL_DIR}")
+   list(APPEND CMAKE_INSTALL_RPATH "@executable_path/../${LIBRARY_INSTALL_DIR}")
+ else()
+-  list(APPEND CMAKE_INSTALL_RPATH "\$ORIGIN/../${PLUGIN_INSTALL_DIR}")
+-  list(APPEND CMAKE_INSTALL_RPATH "\$ORIGIN/../${LIBRARY_INSTALL_DIR}")
++  list(APPEND CMAKE_INSTALL_RPATH "\$ORIGIN/../..${PLUGIN_INSTALL_DIR}")
++  list(APPEND CMAKE_INSTALL_RPATH "\$ORIGIN/../..${LIBRARY_INSTALL_DIR}")
+ endif()
+ 
+ add_subdirectory(dot)
 -- 
 2.47.0
 

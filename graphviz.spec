@@ -7,7 +7,7 @@
 #
 Name     : graphviz
 Version  : 12.1.2
-Release  : 86
+Release  : 87
 URL      : https://gitlab.com/graphviz/graphviz/-/archive/12.1.2/graphviz-12.1.2.tar.gz
 Source0  : https://gitlab.com/graphviz/graphviz/-/archive/12.1.2/graphviz-12.1.2.tar.gz
 Summary  : Container DataType library
@@ -163,7 +163,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1730914783
+export SOURCE_DATE_EPOCH=1730919880
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -226,7 +226,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1730914783
+export SOURCE_DATE_EPOCH=1730919880
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/graphviz
 cp %{_builddir}/graphviz-%{version}/COPYING %{buildroot}/usr/share/package-licenses/graphviz/3348e5430ba4fb49fa8eb6e9caf4f06266639d0d || :
