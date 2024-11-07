@@ -8,8 +8,6 @@ Configure miss: _ prefix in compiled symbols
 Configure miss: _ prefix in compiled symbols
 Configure miss: ann
 Configure miss: ann
-Configure miss: deflateBound
-Configure miss: deflateBound
 Configure miss: dld.h
 Configure miss: dld.h
 Configure miss: dld.h
@@ -18,26 +16,16 @@ Configure miss: dld_link in -ldld
 Configure miss: dld_link in -ldld
 Configure miss: dld_link in -ldld
 Configure miss: dld_link in -ldld
-Configure miss: expat-config
-Configure miss: expat-config
 Configure miss: g++ option to enable C++11 features
 Configure miss: g++ option to enable C++11 features
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gcc options needed to detect all undeclared functions
-Configure miss: gsort
-Configure miss: gsort
 Configure miss: gtkgl-2.0
 Configure miss: gtkgl-2.0
 Configure miss: gtkglext-1.0
 Configure miss: gtkglext-1.0
 Configure miss: gts
 Configure miss: gts
-Configure miss: if FILE struct contains _cnt
-Configure miss: if FILE struct contains _cnt
-Configure miss: if FILE struct contains _next
-Configure miss: if FILE struct contains _next
-Configure miss: if FILE struct contains _r
-Configure miss: if FILE struct contains _r
 Configure miss: lasi
 Configure miss: lasi
 Configure miss: libglade-2.0
@@ -48,18 +36,14 @@ Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
 Configure miss: mach-o/dyld.h
-Configure miss: main in -lcriterion
-Configure miss: main in -lcriterion
-Configure miss: off64_t
-Configure miss: off64_t
+Configure miss: qmake
+Configure miss: qmake
 Configure miss: qmake-qt5
 Configure miss: qmake-qt5
-Configure miss: stat.h
-Configure miss: stat.h
-Configure miss: stropts.h
-Configure miss: stropts.h
-Configure miss: struct stat64
-Configure miss: struct stat64
+Configure miss: qmake5
+Configure miss: qmake5
+Configure miss: qmake6
+Configure miss: qmake6
 Configure miss: swig
 Configure miss: swig
 Configure miss: sys/dl.h
@@ -68,8 +52,6 @@ Configure miss: sys/dl.h
 Configure miss: sys/dl.h
 Configure miss: whether the compiler supports GNU Objective C
 Configure miss: whether the compiler supports GNU Objective C
-Configure miss: windres
-Configure miss: windres
 Configure miss: x86_64-generic-linux-gnu-clang
 Configure miss: x86_64-generic-linux-gnu-clang
 Configure miss: x86_64-generic-linux-gnu-file
