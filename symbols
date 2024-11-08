@@ -622,7 +622,6 @@ libgvpr.so.2:strmatch
 libgvpr.so.2:toHtml
 libgvpr.so.2:toLower
 libgvpr.so.2:toUpper
-libgvpr.so.2:usesGraph
 libgvpr.so.2:validTVT
 libgvpr.so.2:vmalloc
 libgvpr.so.2:vmclear
@@ -630,7 +629,6 @@ libgvpr.so.2:vmclose
 libgvpr.so.2:vmfree
 libgvpr.so.2:vmopen
 libgvpr.so.2:vmstrdup
-libgvpr.so.2:walksGraph
 libgvpr.so.2:writeFile
 libpathplan.so.4:Pobsclose
 libpathplan.so.4:Pobsopen
